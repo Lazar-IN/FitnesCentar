@@ -3,70 +3,41 @@ package ftn.uns.FitnesCentar.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 public class Clan implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private  Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false,unique = true, name = "user")
     private String koristinckoIme;
 
-    @Column (nullable = false)
+    @Column(nullable = false, name = "lozinka")
     private String lozinka;
 
-    @Column (nullable = false)
+    @Column(nullable = false, name = "ime")
     private String ime;
 
-    @Column (nullable = false)
+    @Column(nullable = false, name = "prezime")
     private String prezime;
 
-    @Column (name = "telefon")
+    @Column(nullable = false, name = "telefon")
     private String kontaktTelefon;
 
-    @Column (nullable = false)
+    @Column(nullable = false, name = "email")
     private String email;
 
-    @Column
+    @Column(name="datum_Rodjenja")
     private LocalDate datumRodjenja;
 
-    @Column
+    @Column(name = "uloga")
     private ULOGA uloga;
 
-    @Column
+    @Column(name = "aktivan")
     private Boolean aktivan;
 
-    @OneToMany(mappedBy = "clan", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Trening> odradjeni = new HashSet<Trening>();
-
-    @OneToMany(mappedBy = "clan", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Trening> prijavljenZa = new HashSet<Trening>();
-
-    @ManyToMany
-    private Set<Termin> prijavljeniTermini = new HashSet<Termin>();
-
     public Clan() { } //TREBA
-
-    public Clan(String koristinckoIme, String lozinka, String ime, String prezime,
-                String kontaktTelefon, String email, LocalDate datumRodjenja,
-                Boolean aktivan, Set<Trening> odradjeni, Set<Trening> prijavljenZa,
-                Set<Termin> prijavljeniTermini) {
-        this.koristinckoIme = koristinckoIme;
-        this.lozinka = lozinka;
-        this.ime = ime;
-        this.prezime = prezime;
-        this.kontaktTelefon = kontaktTelefon;
-        this.email = email;
-        this.datumRodjenja = datumRodjenja;
-        this.uloga = ULOGA.CLAN;
-        this.aktivan = aktivan;
-        this.odradjeni = odradjeni;
-        this.prijavljenZa = prijavljenZa;
-        this.prijavljeniTermini = prijavljeniTermini;
-    }
 
     public Clan(String koristinckoIme, String lozinka, String ime, String prezime,
                 String kontaktTelefon, String email, LocalDate datumRodjenja, Boolean aktivan) {
@@ -80,19 +51,7 @@ public class Clan implements Serializable {
         this.uloga = ULOGA.CLAN;
         this.aktivan = aktivan;
     }
-    public void prijaviZa(Trening t){
-        prijavljenZa.add(t);
-    }
 
-   public void odradio(Trening t) {
-       prijavljenZa.remove(t);
-       odradjeni.add(t);
-   }
-    //private ArrayList<Integer> ocene = new ArrayList<Integer>();
-
-    //FALI LISTA OCENA
-    //FALI METODA/FUNKCIJA OCENI TRENING
-    ////////////////////////////////////////////////
     public void stampaj()
     {
         System.out.println("------"+this.uloga+"------");
@@ -115,6 +74,7 @@ public class Clan implements Serializable {
         System.out.println(" ");
         System.out.println(" ");
     }
+
     @Override
     public String toString() {
         return "Clan{" +
@@ -123,10 +83,11 @@ public class Clan implements Serializable {
                 ", ime='" + ime + '\'' +
                 ", prezime='" + prezime + '\'' +
                 ", kontaktTelefon='" + kontaktTelefon + '\'' +
+                "\r\n"+
                 ", email='" + email + '\'' +
                 ", datumRodjenja=" + datumRodjenja +
                 ", uloga=" + uloga +
                 ", aktivan=" + aktivan +
-                '}';
+                '}'+"\r\n"+"\r\n";
     }
 }
