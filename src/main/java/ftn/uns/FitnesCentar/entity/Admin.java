@@ -38,7 +38,7 @@ public class Admin implements Serializable {
     private Boolean aktivan;
 
     public Admin() { } //TREBA
-
+    //KONSTRUKTOR
     public Admin(String korisnickoIme, String lozinka, String ime,
                  String prezime, String kontaktTelefon, String email,
                  LocalDate datumRodjenja,  Boolean aktivan) {

@@ -1,0 +1,45 @@
+body {
+    font-family: Josefin Sans;
+    background-color: azure;
+    margin-top: 2%;
+    margin-bottom: 10%;
+}
+th{
+    height:80px;width:80px
+
+}
+a{
+    text-decoration: none;
+}
+.accept {
+    color: #FFF;
+    background: #44CC44;
+    padding: 10px 12px;
+    box-shadow: 0 4px 0 0 #2EA62E;
+}
+.accept:hover {
+    background: #6FE76F;
+    box-shadow: 0 4px 0 0 #7ED37E;
+}
+.deny {
+    color: #FFF;
+    background: tomato;
+    padding: 10px 12px;
+    box-shadow: 0 4px 0 0 #CB4949;
+}
+.deny:hover {
+    background: rgb(255, 147, 128);
+    box-shadow: 0 4px 0 0 #EF8282;
+}
+.container{
+    clear:both;
+    overflow:auto;
+}
+nav{float:right;}
+
+.logo img{float:left;}
+
+ul li{
+    display: inline-block; padding:10px;
+    font-size:20px; font-family:Josefin Sans;
+}
