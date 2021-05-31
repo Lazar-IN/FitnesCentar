@@ -44,7 +44,7 @@ public class Trener implements Serializable {
 
     @OneToMany(mappedBy = "trener", fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<Trening> drziTreninge = new HashSet<Trening>();
-    //PROVERITI
+
     @OneToMany( fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<Ocena> listaOcena = new HashSet<Ocena>();
 

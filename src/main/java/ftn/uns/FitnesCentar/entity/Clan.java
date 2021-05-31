@@ -39,13 +39,13 @@ public class Clan implements Serializable {
     @Column(name = "aktivan")
     private Boolean aktivan;
 
-    @ManyToMany//PROVERITI
+    @ManyToMany
     @JoinTable(name = "odradjeni_treninzi",
             joinColumns = @JoinColumn(name = "clan_id",referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "trening_id",referencedColumnName = "id"))
     private Set<Trening> odradjeni = new HashSet<Trening>();
 
-    @ManyToMany//PROVERITI
+    @ManyToMany
     @JoinTable(name = "prijavljen_za_treninge",
             joinColumns = @JoinColumn(name = "clan_id",referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "trening_id",referencedColumnName = "id"))

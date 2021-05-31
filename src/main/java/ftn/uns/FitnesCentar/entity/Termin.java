@@ -21,7 +21,7 @@ public class Termin implements Serializable {
     @Column(name = "datum")
     private LocalDate datum;
 
-    @ManyToMany
+    @ManyToMany //ovo ne treba, tj treba samo jedna
     private Set<Sala> sale = new HashSet<Sala>();
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)//mappedBy = "termin",   SA OVIM NE RADI

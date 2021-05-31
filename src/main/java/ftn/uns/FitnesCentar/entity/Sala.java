@@ -17,7 +17,7 @@ public class Sala implements Serializable {
     @Column(name = "oznaka", nullable = false, unique = true)
     private String oznaka;
 
-    @ManyToMany
+    @ManyToMany//mani to one
     private Set<Termin> terminskaLista = new HashSet<Termin>(); //veza N:N
 
     public Sala() {}    //TREBA
