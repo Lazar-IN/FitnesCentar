@@ -17,8 +17,8 @@ public class Sala implements Serializable {
     @Column(name = "oznaka", nullable = false, unique = true)
     private String oznaka;
 
-    @ManyToMany//mani to one
-    private Set<Termin> terminskaLista = new HashSet<Termin>(); //veza N:N
+    @OneToMany(mappedBy = "sala", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Termin> terminskaLista = new HashSet<Termin>();
 
     public Sala() {}    //TREBA
     //KONSTRUKTOR
@@ -55,6 +55,7 @@ public class Sala implements Serializable {
         this.oznaka = oznaka;
     }
 
+
     public Set<Termin> getTerminskaLista() {
         return terminskaLista;
     }
@@ -77,13 +78,15 @@ public class Sala implements Serializable {
             System.out.println("Termin nije uklonjen sa terminskeListe!");
         }
     }
+
+
     @Override
     public String toString() {
         return "Sala{" +
                 "kapacitet=" + kapacitet +
                 ", oznaka='" + oznaka + '\'' +
                 "\r\n"+
-                ", terminskaLista=" + terminskaLista +
+              //  ", terminskaLista=" + terminskaLista +
                 '}'+"\r\n"+"\r\n";
     }
     public void stampaj(){
@@ -91,9 +94,11 @@ public class Sala implements Serializable {
         System.out.println("Oznaka: "+this.oznaka);
         System.out.println("Kapacitet"+this.kapacitet);
         System.out.print("Termini: ");
+        /*
         for(Termin ter : terminskaLista){
             System.out.println(ter.getTrening().getNaziv()+" - "+ter.getDatum());
         }
+         */
         System.out.println(" ");
         System.out.println(" ");
     }

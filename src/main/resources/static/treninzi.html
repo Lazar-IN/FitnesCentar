@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="sr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Treninzi</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300&display=swap" rel="stylesheet">
+    <link href="CSS/stiloviTreninzi.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div>
+        <img src="images/logo.png" width="350" alt="Logo"/>
+    </div>
+
+    <h1>Treninzi</h1>
+
+    <table id="trenings">
+        <tr>
+            <th>Id</th>
+            <th>Naziv</th>
+            <th>Nivo</th>
+            <th>Trajanje u nedeljama</th>
+            <th>Dana u nedelji</th>
+        </tr>
+        <tr th:each="trening : ${trenings}">
+            <td th:text="${trenig.id}"></td>
+            <td th:text="${trenig.naziv}"></td>
+            <td th:text="${trenig.nivoTreninga"></td>
+            <td th:text="${trenig.trajanjeUNedeljama}"></td>
+            <td th:text="${trenig.danaUNedelji}"></td>
+        </tr>
+    </table>
+
+</body>
+</html>

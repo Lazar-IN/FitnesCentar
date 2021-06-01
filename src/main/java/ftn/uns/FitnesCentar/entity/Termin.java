@@ -21,8 +21,8 @@ public class Termin implements Serializable {
     @Column(name = "datum")
     private LocalDate datum;
 
-    @ManyToMany //ovo ne treba, tj treba samo jedna
-    private Set<Sala> sale = new HashSet<Sala>();
+    @ManyToOne
+    private Sala sala;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)//mappedBy = "termin",   SA OVIM NE RADI
     private Set<Clan> prijavljeniClanovi = new HashSet<Clan>();
@@ -41,7 +41,7 @@ public class Termin implements Serializable {
         this.trening = trening;
         this.cena = cena;
         this.datum = datum;
-        this.sale = sale;
+        this.sala = sala;
         this.prijavljeniClanovi = prijavljeniClanovi;
         this.brojPrijavljenih = prijavljeniClanovi.size();
         this.listaOcena = listaOcena;
@@ -51,7 +51,7 @@ public class Termin implements Serializable {
         this.trening = trening;
         this.cena = cena;
         this.datum = datum;
-        this.sale = sale;
+        this.sala = sala;
         this.brojPrijavljenih = 0;
     }
     //KONSTRUKTOR BEZ LISTI
@@ -86,12 +86,12 @@ public class Termin implements Serializable {
         this.datum = datum;
     }
 
-    public Set<Sala> getSale() {
-        return sale;
+    public Sala getSala() {
+        return sala;
     }
 
-    public void setSale(Set<Sala> sale) {
-        this.sale = sale;
+    public void setSala(Sala sala) {
+        this.sala = sala;
     }
 
     public Set<Clan> getPrijavljeniClanovi() {
@@ -125,7 +125,7 @@ public class Termin implements Serializable {
     public void setListaOcena(Set<Ocena> listaOcena) {
         this.listaOcena = listaOcena;
     }
-
+    /*
     public void dodajSalu(Sala s){
         if(sale.add(s)){
             System.out.println("Sala uspesno dodata.");
@@ -140,6 +140,8 @@ public class Termin implements Serializable {
             System.out.println("Sala nije uklonjena!");
         }
     }
+
+     */
     public void dodajClana(Clan c){
         if(prijavljeniClanovi.add(c)){
             brojPrijavljenih++;
@@ -176,10 +178,7 @@ public class Termin implements Serializable {
         }
         System.out.println(" ");
         //System.out.print(prijavljeniClanovi);
-        System.out.print("Sale: ");
-        for (Sala s : sale) {
-            System.out.print(s.getOznaka()+", ");
-        }
+        System.out.print("Sala: "+this.sala);
         System.out.println(" ");
         System.out.println(" ");
     }
@@ -190,7 +189,7 @@ public class Termin implements Serializable {
                 ", cena=" + cena +
                 ", datum=" + datum +
                 "\r\n"+
-                ", sale=" + sale +
+                ", sala=" + sala +
                // ", prijavljeniClanovi=" + prijavljeniClanovi +
                 ", brojPrijavljenih=" + brojPrijavljenih +
                 '}'+"\r\n"+"\r\n";

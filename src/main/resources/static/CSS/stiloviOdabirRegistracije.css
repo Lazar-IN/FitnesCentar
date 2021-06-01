@@ -1,0 +1,21 @@
+body {
+    margin: auto;
+    margin-top: 3cm;
+    width: 35%;
+    border: 2.5px solid blue;
+    padding: 20px;
+    background-color: #c5e8e6;
+    backface-visibility: inherit;
+    font-family: Josefin sans, serif;
+}
+div {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center
+}
+.box{
+    background-color: #afb5ed;
+    height: 42px;
+    width: 140px;
+    font-size: 20px;
+}

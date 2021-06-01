@@ -206,6 +206,7 @@ public class Trener implements Serializable {
         drziTreninge.add(trening);
         fc.trenerDodajeTermin(this,termin,sala);
     }
+    /*
     public void dodajSaluZaTermin(FitnessCentar fc,Termin termin,Sala sala){
         if(fc.getTreneri().contains(this)){
             fc.dodajSaluZaTermin(termin,sala);
@@ -213,6 +214,8 @@ public class Trener implements Serializable {
             System.out.println("Trener "+this.getKoristinckoIme()+" ne pripada fitnes centru "+fc.getNaziv());
         }
     }
+
+     */
     public void oceni(Ocena o){ //KORISTITI SAMO U KLASI CLAN
             listaOcena.add(o);
             long sum=0;

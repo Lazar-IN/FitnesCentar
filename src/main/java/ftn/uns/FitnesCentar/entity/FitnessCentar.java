@@ -162,6 +162,7 @@ public class FitnessCentar implements Serializable {
             System.out.println("Trener "+trener.getKoristinckoIme()+" ne pripada fitnes centru "+this.getNaziv());
         }
     }
+    /*
     public void dodajSaluZaTermin(Termin termin,Sala sala){
         if(raspored.contains(termin)){
             if(sale.contains(sala)){
@@ -176,6 +177,8 @@ public class FitnessCentar implements Serializable {
             System.out.println("Termin je nepostojeci!");
         }
     }
+
+     */
     //STAMPA TERMINE U FC
     public void pregledTermina(){
         if(raspored.isEmpty()){
