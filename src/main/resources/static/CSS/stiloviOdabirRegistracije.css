@@ -4,14 +4,19 @@ body {
     width: 35%;
     border: 2.5px solid blue;
     padding: 20px;
-    background-color: #c5e8e6;
     backface-visibility: inherit;
     font-family: Josefin sans, serif;
+    background-image: url('../images/background.jpg');
+    background-size: 100%;
+    background-position: 0px 30px;
+    background-repeat: no-repeat;
+    background-color: azure;
 }
 div {
     margin-left: auto;
     margin-right: auto;
-    text-align: center
+    text-align: center;
+    background-color: azure;
 }
 .box{
     background-color: #afb5ed;
