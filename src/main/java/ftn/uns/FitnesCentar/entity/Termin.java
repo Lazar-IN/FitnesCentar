@@ -174,7 +174,7 @@ public class Termin implements Serializable {
         System.out.println("Broj prijavljenih clanova: "+this.brojPrijavljenih);
         System.out.print("Prijavljeni clanovi: ");
         for (Clan s : prijavljeniClanovi) {
-            System.out.print(s.getKoristinckoIme()+", ");
+            System.out.print(s.getKorisnickoIme()+", ");
         }
         System.out.println(" ");
         //System.out.print(prijavljeniClanovi);

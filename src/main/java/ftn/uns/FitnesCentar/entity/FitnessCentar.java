@@ -159,7 +159,7 @@ public class FitnessCentar implements Serializable {
                 System.out.println("Sala "+sala.getOznaka()+" ne pripada fitnes centru"+this.getNaziv());
             }
         } else{
-            System.out.println("Trener "+trener.getKoristinckoIme()+" ne pripada fitnes centru "+this.getNaziv());
+            System.out.println("Trener "+trener.getKorisnickoIme()+" ne pripada fitnes centru "+this.getNaziv());
         }
     }
     /*

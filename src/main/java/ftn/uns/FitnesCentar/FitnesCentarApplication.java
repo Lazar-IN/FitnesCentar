@@ -1,6 +1,8 @@
 package ftn.uns.FitnesCentar;
 
 import ftn.uns.FitnesCentar.entity.*;
+import ftn.uns.FitnesCentar.repository.ClanRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,6 +11,9 @@ import java.time.LocalDate;
 
 @SpringBootApplication
 public class FitnesCentarApplication implements CommandLineRunner {
+
+	@Autowired
+	private ClanRepository clanRepository;
 
 	@Override
 	public void run(String...arg){
@@ -71,6 +76,25 @@ public class FitnesCentarApplication implements CommandLineRunner {
 		System.out.println("Testiranje klase fitnesCentar");
 		fc.trenerDodajeTermin(trener,termin,sala);
 		fc.pregledTermina();
+
+		System.out.println("Kraj prvog dela testiranja.");
+
+		Clan clan1 = new Clan();
+		clan1.setIme("Nemanja");
+		clan1.setPrezime("Nemanjic");
+		clan1.setKorisnickoIme("nn000");
+		clan1.setEmail("nemanja00@gmail.com");
+		clan1.setDatumRodjenja(LocalDate.of(2000,01,02));
+		clan1.setAktivan(true);
+		clan1.setKontaktTelefon("0677945236");
+		clan1.setLozinka("yftuf");
+
+		this.clanRepository.save(clan1);
+
+		//List<Clan> clanovi = this.clanRepository.find
+
+		System.out.println("Kraj drugog dela testiranja.");
+
 
 		System.out.println("Kraj testiranja.");
 	}

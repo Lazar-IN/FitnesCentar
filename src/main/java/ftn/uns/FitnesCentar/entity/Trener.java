@@ -13,7 +13,7 @@ public class Trener implements Serializable {
     private  Long id;
 
     @Column(nullable = false,unique = true, name = "user")
-    private String koristinckoIme;
+    private String korisnickoIme;
 
     @Column(nullable = false, name = "lozinka")
     private String lozinka;
@@ -50,10 +50,10 @@ public class Trener implements Serializable {
 
     public Trener(){}   //TREBA
     //KONSTRUKTOR
-    public Trener(String koristinckoIme, String lozinka, String ime, String prezime,
+    public Trener(String korisnickoIme, String lozinka, String ime, String prezime,
                   String kontaktTelefon, String email, LocalDate datumRodjenja,
                   Boolean aktivan, Set<Trening> drziTreninge,Set<Ocena> listaOcena) {
-        this.koristinckoIme = koristinckoIme;
+        this.korisnickoIme = korisnickoIme;
         this.lozinka = lozinka;
         this.ime = ime;
         this.prezime = prezime;
@@ -67,9 +67,9 @@ public class Trener implements Serializable {
         this.prosecnaOcena = 0;
     }
     //KONSTRUKTOR BEZ LISTE
-    public Trener(String koristinckoIme, String lozinka, String ime, String prezime,
+    public Trener(String korisnickoIme, String lozinka, String ime, String prezime,
                   String kontaktTelefon, String email, LocalDate datumRodjenja, Boolean aktivan) {
-        this.koristinckoIme = koristinckoIme;
+        this.korisnickoIme = korisnickoIme;
         this.lozinka = lozinka;
         this.ime = ime;
         this.prezime = prezime;
@@ -89,12 +89,12 @@ public class Trener implements Serializable {
         this.id = id;
     }
 
-    public String getKoristinckoIme() {
-        return koristinckoIme;
+    public String getKorisnickoIme() {
+        return korisnickoIme;
     }
 
-    public void setKoristinckoIme(String koristinckoIme) {
-        this.koristinckoIme = koristinckoIme;
+    public void setKorisnickoIme(String koristinckoIme) {
+        this.korisnickoIme = korisnickoIme;
     }
 
     public String getLozinka() {
@@ -230,7 +230,7 @@ public class Trener implements Serializable {
     public void stampaj()
     {
         System.out.println("------"+this.uloga+"------");
-        System.out.println("Korisnicko ime: "+this.koristinckoIme);
+        System.out.println("Korisnicko ime: "+this.korisnickoIme);
         System.out.println("Ime: "+this.ime);
         System.out.println("Prezime: "+this.prezime);
         System.out.println("Tel: "+this.kontaktTelefon);
@@ -256,7 +256,7 @@ public class Trener implements Serializable {
     public String toString() {
         return "Trener{" +
                 "id=" + id +
-                ", koristinckoIme='" + koristinckoIme + '\'' +
+                ", koristinckoIme='" + korisnickoIme + '\'' +
                 ", lozinka='" + lozinka + '\'' +
                 ", ime='" + ime + '\'' +
                 ", prezime='" + prezime + '\'' +

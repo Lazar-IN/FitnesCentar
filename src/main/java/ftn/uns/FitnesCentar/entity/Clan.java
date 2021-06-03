@@ -13,7 +13,7 @@ public class Clan implements Serializable {
     private  Long id;
 
     @Column(nullable = false,unique = true, name = "user")
-    private String koristinckoIme;
+    private String korisnickoIme;
 
     @Column(nullable = false, name = "lozinka")
     private String lozinka;
@@ -50,16 +50,16 @@ public class Clan implements Serializable {
             joinColumns = @JoinColumn(name = "clan_id",referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "trening_id",referencedColumnName = "id"))
     private Set<Trening> prijavljenZa = new HashSet<Trening>();
-    //PROVERITI
+
     @OneToMany( fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<Ocena> listaOcena = new HashSet<Ocena>();
 
     public Clan() { } //TREBA
     //KONSTRUKTOR SA LISTAMA
-    public Clan(String koristinckoIme, String lozinka, String ime, String prezime,
+    public Clan(String korisnickoIme, String lozinka, String ime, String prezime,
                 String kontaktTelefon, String email, LocalDate datumRodjenja,
-                Boolean aktivan, Set<Trening> odradjeni, Set<Trening> prijavljenZa,Set<Ocena> listaOcena) {
-        this.koristinckoIme = koristinckoIme;
+                Boolean aktivan, Set<Trening> odradjeni, Set<Trening> prijavljenZa, Set<Ocena> listaOcena) {
+        this.korisnickoIme = korisnickoIme;
         this.lozinka = lozinka;
         this.ime = ime;
         this.prezime = prezime;
@@ -73,9 +73,9 @@ public class Clan implements Serializable {
         this.listaOcena = listaOcena;
     }
     //KONSTRUKTOR BEZ LISTI
-    public Clan(String koristinckoIme, String lozinka, String ime, String prezime,
+    public Clan(String korisnickoIme, String lozinka, String ime, String prezime,
                 String kontaktTelefon, String email, LocalDate datumRodjenja, Boolean aktivan) {
-        this.koristinckoIme = koristinckoIme;
+        this.korisnickoIme = korisnickoIme;
         this.lozinka = lozinka;
         this.ime = ime;
         this.prezime = prezime;
@@ -94,12 +94,12 @@ public class Clan implements Serializable {
         this.id = id;
     }
 
-    public String getKoristinckoIme() {
-        return koristinckoIme;
+    public String getKorisnickoIme() {
+        return korisnickoIme;
     }
 
-    public void setKoristinckoIme(String koristinckoIme) {
-        this.koristinckoIme = koristinckoIme;
+    public void setKorisnickoIme(String korisnickoIme) {
+        this.korisnickoIme = korisnickoIme;
     }
 
     public String getLozinka() {
@@ -205,8 +205,8 @@ public class Clan implements Serializable {
             Ocena o = new Ocena(ocena,termin,this,trener);
             listaOcena.add(o);
             trener.oceni(o);
-            System.out.println("Clan sa korisnickim imenom "+this.koristinckoIme+" je ocenio trenera "
-                    +trener.getKoristinckoIme()+" ocenom "+ocena);
+            System.out.println("Clan sa korisnickim imenom "+this.korisnickoIme +" je ocenio trenera "
+                    +trener.getKorisnickoIme()+" ocenom "+ocena);
         } else {
             System.out.println("Ocena je izvan opsega(0<ocena>6)");
         }
@@ -215,7 +215,7 @@ public class Clan implements Serializable {
     public void stampaj()
     {
         System.out.println("------"+this.uloga+"------");
-        System.out.println("Korisnicko ime: "+this.koristinckoIme);
+        System.out.println("Korisnicko ime: "+this.korisnickoIme);
         System.out.println("Ime: "+this.ime);
         System.out.println("Prezime: "+this.prezime);
         System.out.println("Tel: "+this.kontaktTelefon);
@@ -238,7 +238,7 @@ public class Clan implements Serializable {
     @Override
     public String toString() {
         return "Clan{" +
-                "koristinckoIme='" + koristinckoIme + '\'' +
+                "koristinckoIme='" + korisnickoIme + '\'' +
                 ", lozinka='" + lozinka + '\'' +
                 ", ime='" + ime + '\'' +
                 ", prezime='" + prezime + '\'' +
