@@ -46,6 +46,7 @@ public class Termin implements Serializable {
         this.brojPrijavljenih = prijavljeniClanovi.size();
         this.listaOcena = listaOcena;
     }
+    //KONSTRUKTOR,bez id-a
     public Termin(Trening trening, double cena, LocalDate datum,
                   Set<Sala> sale) {
         this.trening = trening;
@@ -54,12 +55,19 @@ public class Termin implements Serializable {
         this.sala = sala;
         this.brojPrijavljenih = 0;
     }
-    //KONSTRUKTOR BEZ LISTI
+    //KONSTRUKTOR BEZ LISTI,bez id-a
     public Termin(Trening trening, double cena, LocalDate datum) {
         this.trening = trening;
         this.cena = cena;
         this.datum = datum;
         this.brojPrijavljenih = 0;
+    }
+    //KONSTRUKTOR ZA POTREBE KONTROLERA
+    public Termin(Long id, double cena, LocalDate datum, int brojPrijavljenih) {
+        this.id = id;
+        this.cena = cena;
+        this.datum = datum;
+        this.brojPrijavljenih = brojPrijavljenih;
     }
 
     public Trening getTrening() {

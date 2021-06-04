@@ -27,4 +27,28 @@ public class TreningService {
     public Trening save(Trening trening){
         return this.treningRepository.save(trening);
     }
+
+    public void delete(Long id){
+
+        this.treningRepository.deleteById(id);
+
+    }
+
+    public Trening update(Trening trening) throws Exception{
+        Trening treningToUpdate = this.treningRepository.getOne(trening.getId());
+        if (treningToUpdate == null){
+            throw new Exception("Trening ne postoji!");
+        }
+
+        treningToUpdate.setNaziv(trening.getNaziv());
+        treningToUpdate.setTipTreninga(trening.getTipTreninga());
+        treningToUpdate.setNivoTreninga(trening.getNivoTreninga());
+        treningToUpdate.setDanaUNedelji(trening.getDanaUNedelji());
+        treningToUpdate.setTrajanjeUNedeljama(trening.getTrajanjeUNedeljama());
+        treningToUpdate.setOpis(trening.getOpis());
+
+        Trening savedTr = this.treningRepository.save(treningToUpdate);
+
+        return savedTr;
+    }
 }

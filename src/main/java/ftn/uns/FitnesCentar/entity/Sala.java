@@ -22,16 +22,30 @@ public class Sala implements Serializable {
 
     public Sala() {}    //TREBA
     //KONSTRUKTOR
+    public Sala(Long id, int kapacitet, String oznaka, Set<Termin> terminskaLista) {
+        this.id = id;
+        this.kapacitet = kapacitet;
+        this.oznaka = oznaka;
+        this.terminskaLista = terminskaLista;
+    }
+    //KONSTRUKTOR,bez id-a
     public Sala(int kapacitet, String oznaka, Set<Termin> terminskaLista) {
         this.kapacitet = kapacitet;
         this.oznaka = oznaka;
         this.terminskaLista = terminskaLista;
     }
-    //KONSTRUKTOR BEZ TERMINSKE LISTE
+    //KONSTRUKTOR BEZ TERMINSKE LISTE,bez id-a
     public Sala(int kapacitet, String oznaka) {
         this.kapacitet = kapacitet;
         this.oznaka = oznaka;
     }
+    //KONSTRUKTOR ZA POTREBE CONTROLLERA
+    public Sala(Long id, int kapacitet, String oznaka) {
+        this.id = id;
+        this.kapacitet = kapacitet;
+        this.oznaka = oznaka;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }

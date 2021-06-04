@@ -35,8 +35,19 @@ public class FitnessCentar implements Serializable {
     @OneToMany
     private Set<Termin> raspored = new HashSet<Termin>();
 
-    public FitnessCentar() {}   //TREBA
+    public FitnessCentar() {} //TREBA
     //KONSTRUKTOR
+    public FitnessCentar(Long id, String naziv, String adresa, String brojTelefonaCentrale, String email, Set<Trener> treneri, Set<Sala> sale, Set<Termin> raspored) {
+        this.id = id;
+        this.naziv = naziv;
+        this.adresa = adresa;
+        this.brojTelefonaCentrale = brojTelefonaCentrale;
+        this.email = email;
+        this.treneri = treneri;
+        this.sale = sale;
+        this.raspored = raspored;
+    }
+    //KONSTRUKTOR,bez id-a
     public FitnessCentar(String naziv, String adresa, String brojTelefonaCentrale,
                          String email, Set<Trener> treneri, Set<Sala> sale,Set<Termin> raspored) {
         this.naziv = naziv;
@@ -47,9 +58,17 @@ public class FitnessCentar implements Serializable {
         this.sale = sale;
         this.raspored = raspored;
     }
-    //KONSTUKTOR BEZ LISTI
+    //KONSTUKTOR BEZ LISTI,bez id-a
     public FitnessCentar(String naziv, String adresa,
                          String brojTelefonaCentrale, String email) {
+        this.naziv = naziv;
+        this.adresa = adresa;
+        this.brojTelefonaCentrale = brojTelefonaCentrale;
+        this.email = email;
+    }
+    //KONSTRUKTOR ZA POTREBE CONTOLLERA
+    public FitnessCentar(Long id, String naziv, String adresa, String brojTelefonaCentrale, String email) {
+        this.id = id;
         this.naziv = naziv;
         this.adresa = adresa;
         this.brojTelefonaCentrale = brojTelefonaCentrale;

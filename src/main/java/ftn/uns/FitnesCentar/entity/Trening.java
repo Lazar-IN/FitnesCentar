@@ -32,6 +32,18 @@ public class Trening implements Serializable {
 
     public Trening() {}//TREBA
     //KONSTRUKTOR
+    public Trening(Long id, String naziv, NIVO nivoTreninga, int trajanjeUNedeljama,
+                   int danaUNedelji, TIP tipTreninga, String opis, Trener trener) {
+        this.id = id;
+        this.naziv = naziv;
+        this.nivoTreninga = nivoTreninga;
+        this.trajanjeUNedeljama = trajanjeUNedeljama;
+        this.danaUNedelji = danaUNedelji;
+        this.tipTreninga = tipTreninga;
+        this.opis = opis;
+        this.trener = trener;
+    }
+    //KONSTRUKTOR, bez id-a
     public Trening(String naziv, NIVO nivoTreninga, int trajanjeUNedeljama,
                    int danaUNedelji, TIP tipTreninga, String opis,Trener trener) {
         this.naziv = naziv;
@@ -42,7 +54,7 @@ public class Trening implements Serializable {
         this.opis = opis;
         this.trener = trener;
     }
-    //KONSTRUKTOR BEZ OPISA i TRENERA
+    //KONSTRUKTOR BEZ OPISA i TRENERA, bez id-a
     public Trening(String naziv, NIVO nivoTreninga,
                    int trajanjeUNedeljama, int danaUNedelji, TIP tipTreninga) {
         this.naziv = naziv;
@@ -50,6 +62,25 @@ public class Trening implements Serializable {
         this.trajanjeUNedeljama = trajanjeUNedeljama;
         this.danaUNedelji = danaUNedelji;
         this.tipTreninga = tipTreninga;
+    }
+    //KONSTRUKTOR ZA POTREBE KONTROLERA
+    public Trening(Long id, String naziv, NIVO nivoTreninga, int trajanjeUNedeljama,
+                   int danaUNedelji, TIP tipTreninga, String opis) {
+        this.id = id;
+        this.naziv = naziv;
+        this.nivoTreninga = nivoTreninga;
+        this.trajanjeUNedeljama = trajanjeUNedeljama;
+        this.danaUNedelji = danaUNedelji;
+        this.tipTreninga = tipTreninga;
+        this.opis = opis;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNaziv() {

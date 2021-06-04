@@ -55,7 +55,26 @@ public class Clan implements Serializable {
     private Set<Ocena> listaOcena = new HashSet<Ocena>();
 
     public Clan() { } //TREBA
-    //KONSTRUKTOR SA LISTAMA
+    //KONSTRUKTOR
+    public Clan(Long id, String korisnickoIme, String lozinka, String ime,
+                String prezime, String kontaktTelefon, String email, LocalDate datumRodjenja,
+                ULOGA uloga, Boolean aktivan, Set<Trening> odradjeni,
+                Set<Trening> prijavljenZa, Set<Ocena> listaOcena) {
+        this.id = id;
+        this.korisnickoIme = korisnickoIme;
+        this.lozinka = lozinka;
+        this.ime = ime;
+        this.prezime = prezime;
+        this.kontaktTelefon = kontaktTelefon;
+        this.email = email;
+        this.datumRodjenja = datumRodjenja;
+        this.uloga = uloga;
+        this.aktivan = aktivan;
+        this.odradjeni = odradjeni;
+        this.prijavljenZa = prijavljenZa;
+        this.listaOcena = listaOcena;
+    }
+    //KONSTRUKTOR, bez id-a
     public Clan(String korisnickoIme, String lozinka, String ime, String prezime,
                 String kontaktTelefon, String email, LocalDate datumRodjenja,
                 Boolean aktivan, Set<Trening> odradjeni, Set<Trening> prijavljenZa, Set<Ocena> listaOcena) {
@@ -72,7 +91,7 @@ public class Clan implements Serializable {
         this.prijavljenZa = prijavljenZa;
         this.listaOcena = listaOcena;
     }
-    //KONSTRUKTOR BEZ LISTI
+    //KONSTRUKTOR BEZ LISTI, bez id-a
     public Clan(String korisnickoIme, String lozinka, String ime, String prezime,
                 String kontaktTelefon, String email, LocalDate datumRodjenja, Boolean aktivan) {
         this.korisnickoIme = korisnickoIme;
@@ -83,6 +102,21 @@ public class Clan implements Serializable {
         this.email = email;
         this.datumRodjenja = datumRodjenja;
         this.uloga = ULOGA.CLAN;
+        this.aktivan = aktivan;
+    }
+    //KONSTRUKTOR za potrebe kontrolera
+    public Clan(Long id, String korisnickoIme, String lozinka, String ime,
+                String prezime, String kontaktTelefon, String email, LocalDate datumRodjenja,
+                ULOGA uloga, Boolean aktivan) {
+        this.id = id;
+        this.korisnickoIme = korisnickoIme;
+        this.lozinka = lozinka;
+        this.ime = ime;
+        this.prezime = prezime;
+        this.kontaktTelefon = kontaktTelefon;
+        this.email = email;
+        this.datumRodjenja = datumRodjenja;
+        this.uloga = uloga;
         this.aktivan = aktivan;
     }
 

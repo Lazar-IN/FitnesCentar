@@ -30,7 +30,7 @@ public class Ocena implements Serializable {
         this.odClana = odClana;
         this.zaTrenera = zaTrenera;
     }
-    //KONSTRUKTOR BEZ ID-A
+    //KONSTRUKTOR,bez id-a
     public Ocena(int ocena, Termin zaTermin, Clan odClana, Trener zaTrenera) {
         this.ocena = ocena;
         this.zaTermin = zaTermin;
