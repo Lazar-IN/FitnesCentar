@@ -6,10 +6,39 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300&display=swap" rel="stylesheet">
     <link href="CSS/stiloviTreneri.css" rel="stylesheet" type="text/css">
+    <script src="JS/treneri.js"></script>
 </head>
 <body>
 <div>
     <img src="images/logo.png" width="350" alt="Logo"/>
+</div>
+<div id = "allTreners">
+    <h1>Treneri</h1>
+    <br><br>
+    <div class="container">
+        <table id="treners">
+            <tr>
+                <th>Id</th>
+                <th>Korisnicko ime</th>
+                <th>Ime</th>
+                <th>Prezime</th>
+                <th>Email</th>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div id="oneTrener" hidden>
+    <h2 style="text-align:center">Profil Trenera</h2>
+    <div class="card">
+        <h1 id="id">id</h1>
+        <h1 id="korisnickoIme">korisnicko</h1>
+        <h1 id="ime">Ime</h1>
+        <h1 id="prezime">Prezime</h1>
+        <h1 id="email">Email</h1>
+        <br>
+    </div>
+
 </div>
 
 </body>
