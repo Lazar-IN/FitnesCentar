@@ -105,10 +105,9 @@ public class Clan implements Serializable {
         this.aktivan = aktivan;
     }
     //KONSTRUKTOR za potrebe kontrolera
-    public Clan(Long id, String korisnickoIme, String lozinka, String ime,
+    public Clan( String korisnickoIme, String lozinka, String ime,
                 String prezime, String kontaktTelefon, String email, LocalDate datumRodjenja,
                 ULOGA uloga, Boolean aktivan) {
-        this.id = id;
         this.korisnickoIme = korisnickoIme;
         this.lozinka = lozinka;
         this.ime = ime;
@@ -116,7 +115,7 @@ public class Clan implements Serializable {
         this.kontaktTelefon = kontaktTelefon;
         this.email = email;
         this.datumRodjenja = datumRodjenja;
-        this.uloga = uloga;
+        this.uloga = ULOGA.CLAN;
         this.aktivan = aktivan;
     }
 

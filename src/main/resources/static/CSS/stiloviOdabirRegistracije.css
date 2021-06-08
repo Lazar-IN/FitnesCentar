@@ -6,7 +6,6 @@ body {
     padding: 20px;
     backface-visibility: inherit;
     font-family: Josefin sans, serif;
-    background-image: url('../images/background.jpg');
     background-size: 100%;
     background-position: 0px 30px;
     background-repeat: no-repeat;

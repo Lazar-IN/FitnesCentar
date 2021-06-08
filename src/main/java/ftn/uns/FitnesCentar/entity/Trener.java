@@ -106,7 +106,7 @@ public class Trener implements Serializable {
         this.kontaktTelefon = kontaktTelefon;
         this.email = email;
         this.datumRodjenja = datumRodjenja;
-        this.uloga = uloga;
+        this.uloga = ULOGA.TRENER;
         this.aktivan = aktivan;
         this.prosecnaOcena = prosecnaOcena;
     }

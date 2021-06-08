@@ -28,7 +28,6 @@ public class ClanController {
         Clan clan = this.clanService.findOne(id);
 
         ClanDTO clanDTO = new ClanDTO();
-        clanDTO.setId(clan.getId());
         clanDTO.setKorisnickoIme(clan.getKorisnickoIme());
         clanDTO.setIme(clan.getIme());
         clanDTO.setPrezime(clan.getPrezime());
@@ -49,7 +48,7 @@ public class ClanController {
         List<ClanDTO> clanDTOS = new ArrayList<>();
 
         for (Clan clan : clanList) {
-            ClanDTO clanDTO = new ClanDTO(clan.getId(),clan.getKorisnickoIme(),
+            ClanDTO clanDTO = new ClanDTO(clan.getKorisnickoIme(),
                     clan.getLozinka(),clan.getIme(),clan.getPrezime(),clan.getKontaktTelefon(),clan.getEmail(),
                     clan.getDatumRodjenja(),clan.getUloga(),clan.getAktivan());
 
@@ -61,13 +60,13 @@ public class ClanController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ClanDTO> createClan(@RequestBody ClanDTO clanDTO) throws Exception {
 
-        Clan clan = new Clan(clanDTO.getId(), clanDTO.getKorisnickoIme(),clanDTO.getLozinka(),
+        Clan clan = new Clan(clanDTO.getKorisnickoIme(),clanDTO.getLozinka(),
                 clanDTO.getIme(),clanDTO.getPrezime(),clanDTO.getKontaktTelefon(),clanDTO.getEmail(),
                 clanDTO.getDatumRodjenja(),clanDTO.getUloga(),clanDTO.getAktivan());
 
         Clan newClan = clanService.save(clan);
 
-        ClanDTO newClanDTO = new ClanDTO(newClan.getId(), newClan.getKorisnickoIme(),newClan.getLozinka(),
+        ClanDTO newClanDTO = new ClanDTO(newClan.getKorisnickoIme(),newClan.getLozinka(),
                 newClan.getIme(),newClan.getPrezime(),newClan.getKontaktTelefon(),newClan.getEmail(),
                 newClan.getDatumRodjenja(),newClan.getUloga(),newClan.getAktivan());
 
@@ -77,7 +76,7 @@ public class ClanController {
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ClanDTO> updateClan(@PathVariable Long id, @RequestBody ClanDTO clanDTO) throws Exception {
 
-        Clan clan = new Clan(clanDTO.getId(), clanDTO.getKorisnickoIme(), clanDTO.getLozinka(),
+        Clan clan = new Clan(clanDTO.getKorisnickoIme(), clanDTO.getLozinka(),
                 clanDTO.getIme(),clanDTO.getPrezime(),clanDTO.getKontaktTelefon(),clanDTO.getEmail(),
                 clanDTO.getDatumRodjenja(),clanDTO.getUloga(),clanDTO.getAktivan());
 
@@ -85,7 +84,7 @@ public class ClanController {
 
         Clan updatedC = clanService.update(clan);
 
-        ClanDTO updatedCDTO = new ClanDTO(updatedC.getId(), updatedC.getKorisnickoIme(),updatedC.getLozinka(),
+        ClanDTO updatedCDTO = new ClanDTO(updatedC.getKorisnickoIme(),updatedC.getLozinka(),
                 updatedC.getIme(),updatedC.getPrezime(),updatedC.getKontaktTelefon(),updatedC.getEmail(),
                 updatedC.getDatumRodjenja(),updatedC.getUloga(),updatedC.getAktivan());
 

@@ -6,35 +6,37 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300&display=swap" rel="stylesheet">
   <link href="CSS/stiloviRegistracijaKorisnika.css" rel="stylesheet" type="text/css">
+  <script src="JS/jquery.min.js"></script>
+  <script src="JS/jquery.validate.min.js"></script>
   <script src="JS/registracijaKorisnika.js"></script>
 
 </head>
 <body>
     <img src="images/logo.png" width="240" alt="Logo"/>
-    <form action="">
+    <form action="GET" name="registracija">
       <div class="container" id="centre">
         <h1>Registracija korisnika</h1>
         <hr>
         <label><b>Korisncko ime:</b></label>
-        <input type="text" placeholder="Unesite korisnicko ime" required>
+        <input type="text" placeholder="Unesite korisnicko ime" name="korisnickoIme" id="korisnickoIme" required>
         <br/><br/><br/>
         <label for="password"><b>Lozinka:</b></label>
         <input type="password" placeholder="Unesite lozinku" name="password" id="password" required>
         <br/><br/><br/>
         <label><b>Ime:</b></label>
-        <input type="text" placeholder="Unesite vase ime" required>
+        <input type="text" placeholder="Unesite vase ime" name="ime" id="ime" required>
         <br/><br/><br/>
         <label><b>Prezime:</b></label>
-        <input type="text" placeholder="Unesite vase prezime" required>
+        <input type="text" placeholder="Unesite vase prezime" name="prezime" id="prezime" required>
         <br/><br/><br/>
         <label><b>Kontakt telefon:</b></label>
-        <input type="text" placeholder="Unesite telefon" required>
+        <input type="text" placeholder="Unesite telefon" name="kontaktTelefon" id="kontaktTelefon" required>
         <br/><br/><br/>
         <label for="email"><b>Email:</b></label>
         <input type="text" placeholder="Unesite email" name="email" id="email" required>
         <br/><br/><br/>
         <label><b>Datum rodjenja:</b></label>
-        <input type="date" placeholder="Unesite datum rodjenja" required>
+        <input type="date" placeholder="Unesite datum rodjenja" name="datumRodjena" id="datumRodjena" required>
         <br/><br/><br/>
         <hr>
         <button type="submit" class="registerbtn">Zavrsi</button>

@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html lang="sr" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="sr">
+
 <head>
     <meta charset="UTF-8">
     <title>Treninzi</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300&display=swap" rel="stylesheet">
     <link href="CSS/stiloviTreninzi.css" rel="stylesheet" type="text/css">
+    <script src="JS/jquery.min.js"></script>
+    <script src="JS/jquery.validate.min.js"></script>
     <script src="JS/treninzi.js"></script>
 </head>
+
 <body>
+
     <div>
         <img src="images/logo.png" width="350" alt="Logo"/>
     </div>
-
-    <h1>Treninzi</h1>
 
     <div id="allTrenings">
         <h1>Treninzi</h1>
         <br><br>
         <div class="container">
-            <table id="trenings">
+            <table id="treninzi">
                 <tr>
                     <th>Id</th>
                     <th>Naziv</th>
@@ -31,24 +34,6 @@
             </table>
         </div>
     </div>
-    <div onload=""></div>
-
-    <table id="trenings">
-        <tr>
-            <th>Id</th>
-            <th>Naziv</th>
-            <th>Nivo</th>
-            <th>Trajanje u nedeljama</th>
-            <th>Dana u nedelji</th>
-        </tr>
-        <tr th:each="trening : ${trenings}">
-            <td th:text="${trenig.id}"></td>
-            <td th:text="${trenig.naziv}"></td>
-            <td th:text="${trenig.nivoTreninga"></td>
-            <td th:text="${trenig.trajanjeUNedeljama}"></td>
-            <td th:text="${trenig.danaUNedelji}"></td>
-        </tr>
-    </table>
 
 </body>
 </html>

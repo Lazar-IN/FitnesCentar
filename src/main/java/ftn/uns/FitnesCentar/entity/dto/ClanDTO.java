@@ -5,7 +5,6 @@ import ftn.uns.FitnesCentar.entity.ULOGA;
 import java.time.LocalDate;
 
 public class ClanDTO {
-    private Long id;
     private String korisnickoIme;
     private String lozinka;
     private String ime;
@@ -19,11 +18,10 @@ public class ClanDTO {
     //PRAZAN KONSTRUKTOR
     public ClanDTO() {}     //TREBA
     //KONSTRUKTOR
-    public ClanDTO(Long id, String korisnickoIme, String lozinka,
+    public ClanDTO(String korisnickoIme, String lozinka,
                    String ime, String prezime, String kontaktTelefon,
                    String email, LocalDate datumRodjenja, ULOGA uloga,
                    Boolean aktivan) {
-        this.id = id;
         this.korisnickoIme = korisnickoIme;
         this.lozinka = lozinka;
         this.ime = ime;
@@ -35,13 +33,7 @@ public class ClanDTO {
         this.aktivan = aktivan;
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getKorisnickoIme() {
         return korisnickoIme;
