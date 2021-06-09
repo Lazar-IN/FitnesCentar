@@ -45,7 +45,7 @@ $(document).on("submit", "form", function (event) {
             //sessionStorage.setItem("id", data["id"]);
             //sessionStorage.setItem("uloga", data["uloga"]);
 
-            alert("Korisnik " + response.id + " je uspešno kreiran!");// prikazujemo poruku uspeha korisniku
+            alert("Korisnik " + response.korisnickoIme + " je uspešno kreiran!");// prikazujemo poruku uspeha korisniku
             window.location.href = "index.html";                // redirektujemo ga na index.html stranicu
         },
         error: function () {                                        // ova f-ja se izvršava posle neuspešnog zahteva

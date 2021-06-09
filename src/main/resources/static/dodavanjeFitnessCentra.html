@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dodavanje novog fitness centra</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300&display=swap" rel="stylesheet">
+  <link href="CSS/stiloviDodavanjeFitnessCentra.css" rel="stylesheet" type="text/css">
+  <script src="JS/jquery.min.js"></script>
+  <script src="JS/jquery.validate.min.js"></script>
+  <script src="JS/dodavanjeFitnessCentra.js"></script>
+</head>
+<body>
+<img src="images/logo.png" width="240" alt="Logo"/>
+<form action="GET" name="dodavanjeFitnessCentra">
+  <div class="container" id="centre">
+    <h1>Dodavanje novog fitness centra</h1>
+    <hr>
+    <label><b>Naziv:</b></label>
+    <input type="text" placeholder="Unesite naziv" name="naziv" id="naziv" required>
+    <br/><br/><br/>
+    <label for="adresa"><b>Adresa:</b></label>
+    <input type="text" placeholder="Unesite adresu" name="adresa" id="adresa" required>
+    <br/><br/><br/>
+    <label><b>Broj telefona:</b></label>
+    <input type="text" placeholder="Unesite broj telefona" name="brojTelefonaCentrale" id="brojTelefonaCentrale" required>
+    <br/><br/><br/>
+    <label><b>Email:</b></label>
+    <input type="text" placeholder="Unesite email" name="email" id="email" required>
+    <br/><br/><br/>
+    <hr>
+    <button type="submit" >Zavrsi</button>
+  </div>
+</form>
+
+</body>
+</html>

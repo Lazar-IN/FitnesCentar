@@ -9,3 +9,12 @@ body{
 .container{
     position: center;
 }
+table{
+    border: 2px solid blue;
+}
+th{
+    border: 1px solid black;
+}
+td{
+    border: 1px solid black;
+}
