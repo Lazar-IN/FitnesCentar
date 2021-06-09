@@ -1,4 +1,3 @@
-// Kreiranje novog zaposlenog
 $(document).on("submit", "form", function (event) {
     event.preventDefault();
 
@@ -18,8 +17,6 @@ $(document).on("submit", "form", function (event) {
     //let email = $("#email").val();
     //let datumRodjena = $("#datumRodjena").val();
 
-    // kreiramo objekat clan
-    // nazivi svih atributa moraju se poklapati sa nazivima na backend-u
     let newClan = {
         korisnickoIme,
         lozinka,
@@ -32,23 +29,19 @@ $(document).on("submit", "form", function (event) {
         //aktivan: false
     }
 
-    // ajax poziv za kreiranje novog zaposlenog na backend-u
     $.ajax({
-        type: "POST",                                               // HTTP metoda je POST
-        url: "http://localhost:8080/api/clan",                   // URL na koji se šalju podaci
-        dataType: "json",                                           // tip povratne vrednosti
-        contentType: "application/json",                            // tip podataka koje šaljemo
-        data: JSON.stringify(newClan),                          // u body-ju šaljemo novog clana (JSON.stringify() pretvara JavaScript objekat u JSON)
-        success: function (response) {                              // ova f-ja se izvršava posle uspešnog zahteva
+        type: "POST",
+        url: "http://localhost:8080/api/clan",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(newClan),
+        success: function (response) {
             console.log(response);
 
-            //sessionStorage.setItem("id", data["id"]);
-            //sessionStorage.setItem("uloga", data["uloga"]);
-
-            alert("Korisnik " + response.korisnickoIme + " je uspešno kreiran!");// prikazujemo poruku uspeha korisniku
-            window.location.href = "index.html";                // redirektujemo ga na index.html stranicu
+            alert("Korisnik " + response.korisnickoIme + " je uspešno kreiran!");
+            window.location.href = "index.html";
         },
-        error: function () {                                        // ova f-ja se izvršava posle neuspešnog zahteva
+        error: function () {
             alert("Greška!");
         }
     });

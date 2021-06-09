@@ -1,9 +1,8 @@
-
     $.ajax({
-        type: "POST",                                               // HTTP metoda je POST
-        url: "http://localhost:8080/api/clan",                   // URL na koji se šalju podaci
-        //dataType: "json",                                           // tip povratne vrednosti
-        //contentType: "application/json",                            // tip podataka koje šaljemo
+        type: "POST",
+        url: "http://localhost:8080/api/clan",
+        dataType: "json",
+        contentType: "application/json",
         data: {
             korisnickoIme: $("#korisnickoIme").val(),
             lozinka: $("#lozinka").val()
