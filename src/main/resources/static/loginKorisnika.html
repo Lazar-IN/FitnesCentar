@@ -2,7 +2,7 @@
 <html lang="sr">
 <head>
     <meta charset="UTF-8">
-    <title>Login korisnika </title>
+    <title>Login</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300&display=swap" rel="stylesheet">
     <link href="CSS/stiloviLoginKorisnika.css" rel="stylesheet" type="text/css">
@@ -13,13 +13,21 @@
 <body>
 <div>
     <img src="images/logo.png" width="240" alt="Logo"/>
-    <h1>Login korisnika</h1>
+    <h1>Login</h1>
+    <br>
     <form name="login">
         <label><b>Korisnicko ime:</b></label><br>
         <input type="text" name="username" id="korisnickoIme"><br/>
         <label><b>Lozinka:</b></label><br/>
         <input type="password" name="password" id="lozinka"><br/><br/>
-        <button type="button" onclick="getInfo()">Login</button><br/>
+        <input type="radio" id="korisnik" name="uloga" value="korisnik" checked="checked">
+        <label for="korisnik">Korisnik</label>
+        <input type="radio" id="trener" name="uloga" value="trener">
+        <label for="trener">Trener</label>
+        <input type="radio" id="admin" name="uloga" value="admin">
+        <label for="admin">Admin</label><br/><br/>
+        <br>
+        <button type="submit">Login</button><br/>
     </form>
 </div>
 </body>
