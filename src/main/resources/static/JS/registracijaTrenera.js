@@ -7,7 +7,7 @@ $(document).on("submit", "form", function (event) {
     let prezime = document.forms['registracija'].prezime.value;
     let kontaktTelefon = document.forms['registracija'].kontaktTelefon.value;
     let email = document.forms['registracija'].email.value;
-    let datumRodjena = $("#datumRodjena").val();
+    let datumRodjenja = document.forms['registracija'].datumRodjenja.value;
 
     let newTrener = {
         korisnickoIme,
@@ -16,7 +16,7 @@ $(document).on("submit", "form", function (event) {
         prezime,
         kontaktTelefon,
         email,
-        datumRodjena
+        datumRodjenja
     }
 
     $.ajax({

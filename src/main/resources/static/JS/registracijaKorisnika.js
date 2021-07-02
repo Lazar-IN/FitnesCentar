@@ -7,15 +7,7 @@ $(document).on("submit", "form", function (event) {
     let prezime = document.forms['registracija'].prezime.value;
     let kontaktTelefon = document.forms['registracija'].kontaktTelefon.value;
     let email = document.forms['registracija'].email.value;
-    let datumRodjena = $("#datumRodjena").val();
-    //let datumRodjenja = document.forms['registracija'].datumRodjenja.value;
-
-    //let korisnickoIme = $("#korisnickoIme").val();
-    //let password = $("#password").val();
-    //let prezime = $("#prezime").val();
-    //let kontaktTelefon = $("#kontaktTelefon").val();
-    //let email = $("#email").val();
-    //let datumRodjena = $("#datumRodjena").val();
+    let datumRodjenja = document.forms['registracija'].datumRodjenja.value;
 
     let newClan = {
         korisnickoIme,
@@ -24,7 +16,7 @@ $(document).on("submit", "form", function (event) {
         prezime,
         kontaktTelefon,
         email,
-        datumRodjena
+        datumRodjenja
         //uloga: 1,
         //aktivan: false
     }

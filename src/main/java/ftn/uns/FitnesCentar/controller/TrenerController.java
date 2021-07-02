@@ -106,4 +106,8 @@ public class TrenerController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    //login
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "api/trener")
+
+
 }
