@@ -107,7 +107,30 @@ public class TrenerController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     //login
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "api/trener")
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/trener")
+    public ResponseEntity<TrenerDTO> prijavaTrener(@RequestBody TrenerDTO dolazna) throws Exception{
+        List<Trener> sviTreneri = trenerService.findAll();
+        TrenerDTO trenerDTO = new TrenerDTO(dolazna.getKorisnickoIme(), dolazna.getLozinka());
+        for(Trener trener : sviTreneri){
+            if(trener.getKorisnickoIme().equalsIgnoreCase(trenerDTO.getKorisnickoIme()) && trener.getLozinka().equalsIgnoreCase(trenerDTO.getLozinka())){
+                if (trener.getAktivan()==true){
+                    trenerDTO.setId(trener.getId());
+                    //trenerDTO.setPoruka("Uspesno ste se ulogovali.");
+                    //trenerDTO.setAllert(false);
 
+                    return new ResponseEntity<>(trenerDTO, HttpStatus.OK);
+                } else{
+                    //trenerDTO.setPoruka("Trener nije aktivan.");
+                    //trenerDTO.setAllert(true);
+
+                    return new ResponseEntity<>(trenerDTO, HttpStatus.OK);
+                }
+            } else {
+                //trenerDTO.setPoruka("Pogresno korisnicko ime ili lozinka");
+                //trenerDTO.setAllert(true);
+            }
+        }
+        return new ResponseEntity<>(trenerDTO, HttpStatus.OK);
+    }
 
 }

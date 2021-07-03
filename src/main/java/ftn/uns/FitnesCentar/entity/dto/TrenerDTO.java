@@ -36,6 +36,11 @@ public class TrenerDTO {
         this.aktivan = aktivan;
         this.prosecnaOcena = prosecnaOcena;
     }
+    //ZA LOGIN
+    public TrenerDTO(String korisnickoIme, String lozinka) {
+        this.korisnickoIme = korisnickoIme;
+        this.lozinka = lozinka;
+    }
 
     public Long getId() {
         return id;
