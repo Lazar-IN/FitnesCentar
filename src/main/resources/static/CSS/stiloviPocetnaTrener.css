@@ -1,0 +1,39 @@
+body{
+    background-image: linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.6)),url("../images/background.jpg");
+    background-size: 100%;
+    margin-top: 10px;
+    background-position: 0px 30px;
+    background-repeat: no-repeat;
+    background-color: azure;
+}
+.navigation-bar {
+    width: 100%;
+    height: 80px;
+    background-color: #c2c2a3;
+}
+.logo {
+    display: inline-block;
+    vertical-align: top;
+    width: 200px;
+    margin-right: 20px;
+    margin-top: 15px;
+}
+.navigation-bar > a {
+    display: inline-block;
+    vertical-align: top;
+    height: 80px;
+    line-height: 80px;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.navigation-bar a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+.navigation-bar a:hover {
+    background-color: #ddd;
+    color: black;
+}

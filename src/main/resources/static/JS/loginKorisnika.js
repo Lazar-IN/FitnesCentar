@@ -45,15 +45,15 @@ $(document).on("submit", "form", function (event) {
                 console.log(uloga);
                 localStorage.setItem("uloga", "clan");
                 alert(prijava.poruka);
-                window.location.href = "../index.html";
+                window.location.href = "../pocetnaClan.html";
             } else if (prijava.uloga == 3){
                 localStorage.setItem("uloga","trener");
                 alert(prijava.poruka);
-                window.location.href = "../index.html";
+                window.location.href = "../pocetnaTrener.html";
             } else {
                 localStorage.setItem("uloga","admin");
                 alert(prijava.poruka);
-                window.location.href = "../index.html";
+                window.location.href = "../pocetnaAdmin.html";
             }
         }
     })

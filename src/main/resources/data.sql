@@ -65,7 +65,9 @@ insert into sala (kapacitet,oznaka) values (10,'s4');
 insert into sala (kapacitet,oznaka) values (5,'s3');
 insert into sala (kapacitet,oznaka) values (15,'s5');
 insert into sala (kapacitet,oznaka) values (23,'s6');
+
 --testiranje termina
+
 insert into termin(broj_prijavljenih,cena,datum) values (0,1000,'2021-05-14');
 insert into termin(broj_prijavljenih,cena,datum) values (0,1200,'2021-05-14');
 insert into termin(broj_prijavljenih,cena,datum) values (0,1000,'2021-05-15');

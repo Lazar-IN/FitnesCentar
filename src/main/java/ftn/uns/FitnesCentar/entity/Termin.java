@@ -24,6 +24,15 @@ public class Termin implements Serializable {
     @ManyToOne
     private Sala sala;
 
+    @Column(name = "naziv")
+    private String naziv;
+    @Column(name = "opis")
+    private String opis;
+    @Column(name = "tip")
+    private TIP tip;
+
+
+
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)//mappedBy = "termin",   SA OVIM NE RADI
     private Set<Clan> prijavljeniClanovi = new HashSet<Clan>();
 
@@ -35,17 +44,33 @@ public class Termin implements Serializable {
 
     public Termin() {}  //TREBA
     //KONSTRUKTOR
+
     public Termin(Long id, Trening trening, double cena, LocalDate datum,
-                  Set<Sala> sale, Set<Clan> prijavljeniClanovi, Set<Ocena> listaOcena) {
+                  Sala sala, String naziv, String opis, TIP tip, Set<Clan> prijavljeniClanovi,
+                  int brojPrijavljenih, Set<Ocena> listaOcena) {
         this.id = id;
         this.trening = trening;
         this.cena = cena;
         this.datum = datum;
         this.sala = sala;
+        this.naziv = trening.getNaziv();
+        this.opis = trening.getOpis();
+        this.tip = trening.getTipTreninga();
         this.prijavljeniClanovi = prijavljeniClanovi;
-        this.brojPrijavljenih = prijavljeniClanovi.size();
+        this.brojPrijavljenih = brojPrijavljenih;
         this.listaOcena = listaOcena;
     }
+
+    public Termin(Trening trening, double cena, LocalDate datum,
+                  String naziv, String opis, TIP tip) {
+        this.trening = trening;
+        this.cena = cena;
+        this.datum = datum;
+        this.naziv = trening.getNaziv();
+        this.opis = trening.getOpis();
+        this.tip = trening.getTipTreninga();
+    }
+
     //KONSTRUKTOR,bez id-a
     public Termin(Trening trening, double cena, LocalDate datum,
                   Set<Sala> sale) {
@@ -55,6 +80,7 @@ public class Termin implements Serializable {
         this.sala = sala;
         this.brojPrijavljenih = 0;
     }
+
     //KONSTRUKTOR BEZ LISTI,bez id-a
     public Termin(Trening trening, double cena, LocalDate datum) {
         this.trening = trening;

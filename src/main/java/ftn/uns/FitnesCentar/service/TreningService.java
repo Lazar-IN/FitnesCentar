@@ -51,4 +51,6 @@ public class TreningService {
 
         return savedTr;
     }
+
+    
 }

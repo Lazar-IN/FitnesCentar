@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/termin")
+@RequestMapping(value = "/api/termin")
 public class TerminController {
 
     private final TerminService terminService;
