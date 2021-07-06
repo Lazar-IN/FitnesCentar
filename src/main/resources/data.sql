@@ -28,7 +28,11 @@ insert into clan (user,lozinka,ime,prezime,telefon,email,datum_Rodjenja,uloga,ak
 values ('goca93','xcvbbxcb','goca','gocic','0677892456','cago@gmail.com','1993-01-09','1','true');
 insert into clan (user,lozinka,ime,prezime,telefon,email,datum_Rodjenja,uloga,aktivan)
 values ('stanka90','ryuyuurtuu','stanka','stanic','0611239643','stankela@gmail.com','1990-05-09','1','true');
+insert into clan (user,lozinka,ime,prezime,telefon,email,datum_Rodjenja,uloga,aktivan)
+values ('lazar','1234','lazar','lazarevi','0600670144','zola@gmail.com','2000-05-09','1','true');
 --testiranje trenera
+insert into trener (user,lozinka,ime,prezime,telefon,email,datum_Rodjenja,uloga,aktivan)
+values ('lazar','1234','lazar','lazarevi','0600670144','zola@gmail.com','2000-05-09','2','true');
 insert into trener (user,lozinka,ime,prezime,telefon,email,datum_Rodjenja,uloga,aktivan)
 values ('petarcoach','vajnvjfvn','pera','peric','0624120999','rape@gmail.com','1993-04-04','2','true');
 insert into trener (user,lozinka,ime,prezime,telefon,email,datum_Rodjenja,uloga,aktivan)

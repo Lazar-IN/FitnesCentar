@@ -2,6 +2,7 @@ package ftn.uns.FitnesCentar.controller;
 
 import ftn.uns.FitnesCentar.entity.Trener;
 import ftn.uns.FitnesCentar.entity.dto.TrenerDTO;
+import ftn.uns.FitnesCentar.entity.dto.PrijavaDTO;
 import ftn.uns.FitnesCentar.service.TrenerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -106,31 +107,37 @@ public class TrenerController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
     //login
+    /*
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/trener")
-    public ResponseEntity<TrenerDTO> prijavaTrener(@RequestBody TrenerDTO dolazna) throws Exception{
+    public ResponseEntity<TrenerDTO> prijavaTrener(@RequestBody PrijavaDTO dolazna) throws Exception{
         List<Trener> sviTreneri = trenerService.findAll();
-        TrenerDTO trenerDTO = new TrenerDTO(dolazna.getKorisnickoIme(), dolazna.getLozinka());
+        PrijavaDTO prijavaDTO = new PrijavaDTO(dolazna.getKorisnickoIme(), dolazna.getLozinka());
         for(Trener trener : sviTreneri){
-            if(trener.getKorisnickoIme().equalsIgnoreCase(trenerDTO.getKorisnickoIme()) && trener.getLozinka().equalsIgnoreCase(trenerDTO.getLozinka())){
+            if(trener.getKorisnickoIme().equalsIgnoreCase(prijavaDTO.getKorisnickoIme()) && trener.getLozinka().equalsIgnoreCase(prijavaDTO.getLozinka())){
                 if (trener.getAktivan()==true){
-                    trenerDTO.setId(trener.getId());
-                    //trenerDTO.setPoruka("Uspesno ste se ulogovali.");
-                    //trenerDTO.setAllert(false);
+                    prijavaDTO.setId(trener.getId());
+                    prijavaDTO.setPoruka("Uspesno ste se ulogovali.");
+                    prijavaDTO.setAlert(false);
 
-                    return new ResponseEntity<>(trenerDTO, HttpStatus.OK);
+                    return new ResponseEntity<>(prijavaDTO, HttpStatus.OK);
                 } else{
-                    //trenerDTO.setPoruka("Trener nije aktivan.");
-                    //trenerDTO.setAllert(true);
+                    prijavaDTO.setPoruka("Trener nije aktivan.");
+                    prijavaDTO.setAlert(true);
 
-                    return new ResponseEntity<>(trenerDTO, HttpStatus.OK);
+                    return new ResponseEntity<>(prijavaDTO, HttpStatus.OK);
                 }
             } else {
-                //trenerDTO.setPoruka("Pogresno korisnicko ime ili lozinka");
-                //trenerDTO.setAllert(true);
+                prijavaDTO.setPoruka("Pogresno korisnicko ime ili lozinka");
+                prijavaDTO.setAlert(true);
             }
         }
-        return new ResponseEntity<>(trenerDTO, HttpStatus.OK);
+        return new ResponseEntity<>(prijavaDTO, HttpStatus.OK);
     }
+
+     */
+
+
 
 }

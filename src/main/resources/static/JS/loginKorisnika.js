@@ -1,3 +1,4 @@
+/*
 $(document).ready(function () {
     let uloga = localStorage.getItem("uloga");
     if (uloga == null){
@@ -58,3 +59,42 @@ $(document).on("submit", "form", function (event) {
         }
     })
 })
+
+ */
+
+
+$(document).on("submit", "#login", function (event) {
+    event.preventDefault();
+
+
+    let korisnickoIme = $("#korisnickoIme").val();
+    let lozinka = $("#lozinka").val();
+
+
+    let newClan = {
+        korisnickoIme,
+        lozinka
+    }
+
+    console.log(korisnickoIme);
+    console.log(lozinka);
+
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:8080/api/clan",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(newClan),
+        success: function (response) {
+            console.log("SUCCESS:\n", response);
+
+            localStorage.setItem('user', JSON.stringify(response));
+
+            window.location.href = "profil";
+        },
+        error: function (response) {
+            console.log("ERROR:\n", response);
+            alert("Clan ne postoji");
+        }
+    });
+});
