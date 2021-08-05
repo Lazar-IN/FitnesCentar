@@ -1,6 +1,5 @@
 package ftn.uns.FitnesCentar.service;
 
-import ftn.uns.FitnesCentar.entity.Clan;
 import ftn.uns.FitnesCentar.entity.Trener;
 import ftn.uns.FitnesCentar.repository.TrenerRepository;
 import org.springframework.beans.factory.annotation.Autowired;

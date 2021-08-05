@@ -32,12 +32,13 @@ public class TrenerDTO {
         this.kontaktTelefon = kontaktTelefon;
         this.email = email;
         this.datumRodjenja = datumRodjenja;
-        this.uloga = uloga;
+        this.uloga = ULOGA.TRENER;
         this.aktivan = aktivan;
         this.prosecnaOcena = prosecnaOcena;
     }
     //ZA LOGIN
-    public TrenerDTO(String korisnickoIme, String lozinka) {
+    public TrenerDTO(Long id, String korisnickoIme, String lozinka) {
+        this.id = id;
         this.korisnickoIme = korisnickoIme;
         this.lozinka = lozinka;
     }

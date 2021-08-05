@@ -48,7 +48,7 @@ public class ClanController {
         List<ClanDTO> clanDTOS = new ArrayList<>();
 
         for (Clan clan : clanList) {
-            ClanDTO clanDTO = new ClanDTO(clan.getKorisnickoIme(),
+            ClanDTO clanDTO = new ClanDTO(clan.getId(),clan.getKorisnickoIme(),
                     clan.getLozinka(),clan.getIme(),clan.getPrezime(),clan.getKontaktTelefon(),clan.getEmail(),
                     clan.getDatumRodjenja(),clan.getUloga(),clan.getAktivan());
 
@@ -66,7 +66,7 @@ public class ClanController {
 
         Clan newClan = clanService.save(clan);
 
-        ClanDTO newClanDTO = new ClanDTO(newClan.getKorisnickoIme(),newClan.getLozinka(),
+        ClanDTO newClanDTO = new ClanDTO(newClan.getId(),newClan.getKorisnickoIme(),newClan.getLozinka(),
                 newClan.getIme(),newClan.getPrezime(),newClan.getKontaktTelefon(),newClan.getEmail(),
                 newClan.getDatumRodjenja(),newClan.getUloga(),newClan.getAktivan());
 
@@ -84,7 +84,7 @@ public class ClanController {
 
         Clan updatedC = clanService.update(clan);
 
-        ClanDTO updatedCDTO = new ClanDTO(updatedC.getKorisnickoIme(),updatedC.getLozinka(),
+        ClanDTO updatedCDTO = new ClanDTO(updatedC.getId(),updatedC.getKorisnickoIme(),updatedC.getLozinka(),
                 updatedC.getIme(),updatedC.getPrezime(),updatedC.getKontaktTelefon(),updatedC.getEmail(),
                 updatedC.getDatumRodjenja(),updatedC.getUloga(),updatedC.getAktivan());
 
@@ -97,4 +97,42 @@ public class ClanController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+
+
+
+/*
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            value = "/Clan")
+    public ResponseEntity<PrijavaDTO> prijavaClan(@RequestBody PrijDTO dolazna) throws Exception {
+        List<Clan> svi = clanService.findAll();
+        PrijavaDTO prijavaDTO = new PrijavaDTO(dolazna.getKorisnickoIme(), dolazna.getLozinka(), 2, "",false);
+        for (Clan clan : svi) {
+            System.out.println(clan.getKorisnickoIme() + " : " + dolazna.getKorisnickoIme());
+            System.out.println(clan.getLozinka() + " : " + dolazna.getLozinka());
+            System.out.println("u: " + clan.getKorisnickoIme().equalsIgnoreCase(dolazna.getKorisnickoIme()));
+            System.out.println("p: " + clan.getLozinka().equals(dolazna.getLozinka()));
+            if (clan.getKorisnickoIme().equalsIgnoreCase(prijavaDTO.getKorisnickoIme()) && clan.getLozinka().equals(prijavaDTO.getLozinka())) {
+                if (clan.getAktivan() == true) {
+                    prijavaDTO.setPoruka("Uspešno ste se ulogovali!");
+                    prijavaDTO.setId(clan.getId());
+                    prijavaDTO.setAllert(false);
+                    return new ResponseEntity<>(prijavaDTO, HttpStatus.OK);
+                } else {
+                    prijavaDTO.setPoruka("Član nije aktivan! ");
+                    prijavaDTO.setAllert(true);
+                    return new ResponseEntity<>(prijavaDTO, HttpStatus.OK);
+                }
+            } else {
+                prijavaDTO.setPoruka("Uneli se pogrešnu šifru ili korisničko ime!");
+                prijavaDTO.setAllert(true);
+
+            }
+        }
+        return new ResponseEntity<>(prijavaDTO, HttpStatus.OK);
+    }
+
+ */
+
 }

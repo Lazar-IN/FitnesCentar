@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,4 +58,35 @@ public class AdminController {
         }
         return new ResponseEntity<>(adminDTOS, HttpStatus.OK);
     }
+
+    /*
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            value = "/Admin")
+    public ResponseEntity<PrijavaDTO> prijavaAdmin(@RequestBody PrijDTO dolazna) throws Exception {
+        List<Admin> svi = adminService.findAll();
+        PrijavaDTO prijavaDTO = new PrijavaDTO(dolazna.getKorisnickoIme(), dolazna.getLozinka(), 1, "", false);
+        for (Admin admin : svi) {
+            if (admin.getKorisnickoIme().equalsIgnoreCase(prijavaDTO.getKorisnickoIme()) && admin.getLozinka().equals(prijavaDTO.getLozinka())) {
+                if (admin.getAktivan() == true) {
+                    prijavaDTO.setPoruka("Uspešno ste se ulogovali!");
+                    prijavaDTO.setId(admin.getId());
+                    prijavaDTO.setAllert(false);
+                    return new ResponseEntity<>(prijavaDTO, HttpStatus.OK);
+                } else {
+                    prijavaDTO.setPoruka("Administartor nije aktivan! ");
+                    prijavaDTO.setAllert(true);
+                    return new ResponseEntity<>(prijavaDTO, HttpStatus.OK);
+                }
+            } else {
+                prijavaDTO.setPoruka("Uneli se pogrešnu šifru ili korisničko ime!");
+                prijavaDTO.setAllert(true);
+
+            }
+        }
+        return new ResponseEntity<>(prijavaDTO, HttpStatus.OK);
+    }
+
+     */
 }
+

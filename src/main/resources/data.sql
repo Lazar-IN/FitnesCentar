@@ -1,6 +1,6 @@
 --testiranje admina
 insert into admin (user,lozinka,ime,prezime,telefon,email,datum_Rodjenja,uloga,aktivan)
-values ('admin1','assfsaf','Petar','Perovic','0600001643','petargym@gmail.com','1967-06-20','0','true');
+values ('admin','1234','Petar','Perovic','0600001643','petargym@gmail.com','1967-06-20','0','true');
 --testiranje clana
 insert into clan (user,lozinka,ime,prezime,telefon,email,datum_Rodjenja,uloga,aktivan)
 values ('petarp98','fklvndf','petar','petrovic','0600456934','pp@gmail.com','1998-06-20','1','true');

@@ -1,0 +1,26 @@
+package ftn.uns.FitnesCentar.service;
+
+import ftn.uns.FitnesCentar.entity.Clan;
+import ftn.uns.FitnesCentar.repository.ClanRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class ClanLoginService {
+    @Autowired
+    private ClanRepository clanRepository;
+
+    public Clan findOne(Long id){
+        Clan clan = this.clanRepository.getOne(id);
+
+        return clan;
+    }
+
+    public List<Clan> findAll() {
+        List<Clan> clans = this.clanRepository.findAll();
+
+        return clans;
+    }
+}

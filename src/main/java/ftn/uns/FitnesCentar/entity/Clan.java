@@ -68,7 +68,7 @@ public class Clan implements Serializable {
         this.kontaktTelefon = kontaktTelefon;
         this.email = email;
         this.datumRodjenja = datumRodjenja;
-        this.uloga = uloga;
+        this.uloga = ULOGA.CLAN;
         this.aktivan = aktivan;
         this.odradjeni = odradjeni;
         this.prijavljenZa = prijavljenZa;

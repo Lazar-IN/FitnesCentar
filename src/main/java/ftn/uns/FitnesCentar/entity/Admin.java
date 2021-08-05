@@ -48,7 +48,7 @@ public class Admin implements Serializable {
         this.kontaktTelefon = kontaktTelefon;
         this.email = email;
         this.datumRodjenja = datumRodjenja;
-        this.uloga = uloga;
+        this.uloga = ULOGA.ADMIN;
         this.aktivan = aktivan;
     }
     //KONSTRUKTOR, bez id-a

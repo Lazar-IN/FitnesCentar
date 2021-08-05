@@ -15,20 +15,32 @@
     <img src="images/logo.png" width="240" alt="Logo"/>
     <h1>Login</h1>
     <br>
-    <form name="login" id="login">
+    <form id="login">
         <label><b>Korisnicko ime:</b></label><br>
-        <input type="text" name="username" id="korisnickoIme"><br/>
+        <input type="text" name="username" id="korisnickoIme" required><br/>
         <label><b>Lozinka:</b></label><br/>
-        <input type="password" name="password" id="lozinka"><br/><br/>
-        <input type="radio" id="clan" name="uloga" value="clan" checked="checked">
-        <label for="clan">Clan</label>
-        <input type="radio" id="trener" name="uloga" value="trener">
-        <label for="trener">Trener</label>
-        <input type="radio" id="admin" name="uloga" value="admin">
-        <label for="admin">Admin</label><br/><br/>
+        <input type="password" name="password" id="lozinka" required><br/><br/>
+
+        <select id="uloga">
+            <option value="0">Izaberite ulogu:</option>
+            <option value="TRENER">Trener</option>
+            <option value="CLAN">Clan</option>
+            <option value="ADMIN">Administrator</option>
+        </select>
+
         <br>
-        <button type="submit">Login</button><br/>
+
+        <label>
+            <input type="checkbox" checked="checked" name="remember"> Zapamti me
+        </label>
+
+        <br>
+        <button type="submit" id="submit">Login</button>
+        <br/>
     </form>
+
+
+
 </div>
 </body>
 </html>

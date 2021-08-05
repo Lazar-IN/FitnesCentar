@@ -32,9 +32,16 @@ public class AdminDTO {
         this.kontaktTelefon = kontaktTelefon;
         this.email = email;
         this.datumRodjenja = datumRodjenja;
-        this.uloga = uloga;
+        this.uloga = ULOGA.ADMIN;
         this.aktivan = aktivan;
     }
+
+    public AdminDTO(Long id, String korisnickoIme, String lozinka) {
+        this.id = id;
+        this.korisnickoIme = korisnickoIme;
+        this.lozinka = lozinka;
+    }
+
 
     public String getLozinka() {
         return lozinka;

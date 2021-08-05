@@ -2,7 +2,6 @@ package ftn.uns.FitnesCentar.controller;
 
 import ftn.uns.FitnesCentar.entity.Trener;
 import ftn.uns.FitnesCentar.entity.dto.TrenerDTO;
-import ftn.uns.FitnesCentar.entity.dto.PrijavaDTO;
 import ftn.uns.FitnesCentar.service.TrenerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -137,7 +136,34 @@ public class TrenerController {
     }
 
      */
+/*
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            value = "/Trener")
+    public ResponseEntity<PrijavaDTO> prijavaTrener(@RequestBody PrijDTO dolazna) throws Exception {
+        List<Trener> svi = trenerService.findAll();
+        PrijavaDTO prijavaDTO = new PrijavaDTO(dolazna.getKorisnickoIme(), dolazna.getLozinka(), 3, "");
+        for (Trener trener : svi) {
+            if (trener.getKorisnickoIme().equalsIgnoreCase(prijavaDTO.getKorisnickoIme()) && trener.getLozinka().equalsIgnoreCase(prijavaDTO.getLozinka())) {
+                if (trener.getAktivan() == true ) {
+                    prijavaDTO.setPoruka("Uspešno ste se ulogovali!");
+                    prijavaDTO.setId(trener.getId());
+                    prijavaDTO.setAllert(false);
+                    return new ResponseEntity<>(prijavaDTO, HttpStatus.OK);
+                } else {
+                    prijavaDTO.setPoruka("Trener nije aktivan ili je obrisan! ");
+                    prijavaDTO.setAllert(true);
+                    return new ResponseEntity<>(prijavaDTO, HttpStatus.OK);
 
+                }
+            } else {
+                prijavaDTO.setPoruka("Uneli se pogrešnu šifru ili korisničko ime!");
+                prijavaDTO.setAllert(true);
+            }
+        }
+        return new ResponseEntity<>(prijavaDTO, HttpStatus.OK);
+    }
 
+ */
 
 }
