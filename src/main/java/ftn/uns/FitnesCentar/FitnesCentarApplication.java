@@ -45,6 +45,7 @@ public class FitnesCentarApplication implements CommandLineRunner {
 		trener.stampaj();
 		trener.stampajListuTreninga();
 		System.out.println(trener);
+		/*
 		System.out.println("Testiranje klase termin");
 		Termin termin = new Termin(trening,500,LocalDate.of(2021,5,14));
 		termin.dodajClana(clan);
@@ -53,12 +54,16 @@ public class FitnesCentarApplication implements CommandLineRunner {
 		termin.ukloniClana(clan);
 		termin.stampaj();
 		System.out.println(termin);
+		*/
+
 		System.out.println("Testiranje klase sala");
 		Sala sala = new Sala(20,"A1");
 		sala.stampaj();
-		sala.dodajTermin(termin);
+		//sala.dodajTermin(termin);
 		sala.stampaj();
 		System.out.println(sala);
+
+
 		System.out.println("Testiranje klase fitnesCentar");
 		FitnessCentar fc = new FitnessCentar("Extreme","Citaonicka 14",
 				"025456789","extreme@gmail.com");
@@ -68,14 +73,14 @@ public class FitnesCentarApplication implements CommandLineRunner {
 		fc.stampaj();
 		System.out.println(fc);
 		System.out.println("Testiranje klase ocena");
-		Ocena ocena = new Ocena(5,termin,clan,trener);
-		System.out.println(ocena);
-		clan.oceni(termin,trener,4);
-		clan.oceni(termin,trener,41);
+		//Ocena ocena = new Ocena(5,termin,clan,trener);
+		//System.out.println(ocena);
+		//clan.oceni(termin,trener,4);
+		//clan.oceni(termin,trener,41);
 		trener.stampaj();
 		System.out.println("Testiranje klase fitnesCentar");
-		fc.trenerDodajeTermin(trener,termin,sala);
-		fc.pregledTermina();
+		//fc.trenerDodajeTermin(trener,termin,sala);
+		//fc.pregledTermina();
 
 		System.out.println("Kraj prvog dela testiranja.");
 

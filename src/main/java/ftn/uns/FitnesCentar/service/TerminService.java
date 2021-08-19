@@ -40,7 +40,7 @@ public class TerminService {
         }
 
         terToUpdate.setCena(termin.getCena());
-        terToUpdate.setDatum(termin.getDatum());
+        terToUpdate.setDatumIVreme(termin.getDatumIVreme());
 
         Termin savedT = this.terminRepository.save(terToUpdate);
 

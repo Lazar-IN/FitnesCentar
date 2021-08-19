@@ -2,6 +2,8 @@ package ftn.uns.FitnesCentar.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Trening implements Serializable {
@@ -29,6 +31,12 @@ public class Trening implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Trener trener;//TREBA
+
+    @OneToMany(mappedBy = "trening",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<OdradjeniTrening> odradjeniTreninzi = new HashSet<>();
+
+    @OneToMany(mappedBy = "trening",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Termin> termins = new HashSet<>();
 
     public Trening() {}//TREBA
     //KONSTRUKTOR

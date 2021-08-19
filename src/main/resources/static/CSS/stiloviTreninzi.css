@@ -18,3 +18,19 @@ th{
 td{
     border: 1px solid black;
 }
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.searchTerm {
+    width: 20%;
+    border: 3px solid #00B4CC;
+    padding: 5px;
+    height: 20px;
+    border-radius: 5px 5px 5px 5px;
+    outline: none;
+    color: #9DBFAF;
+}
+
+.searchTerm:focus{
+    color: #00B4CC;
+}

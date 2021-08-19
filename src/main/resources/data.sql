@@ -63,20 +63,13 @@ values ('Clean bulk','2','12','4','1','Nabacite ciste misice');
 insert into trening (naziv,nivo_treninga,trajanje_u_nedeljama,dana_u_nedelji,tip_treninga,opis)
 values ('Cut','3','8','4','0','Definicija');
 --testiranje sale
-insert into sala (kapacitet,oznaka) values (50,'s1');
-insert into sala (kapacitet,oznaka) values (50,'s2');
-insert into sala (kapacitet,oznaka) values (10,'s4');
-insert into sala (kapacitet,oznaka) values (5,'s3');
-insert into sala (kapacitet,oznaka) values (15,'s5');
-insert into sala (kapacitet,oznaka) values (23,'s6');
+insert into sala (kapacitet,oznaka,idFC) values (50,'fc1s1', 1);
+insert into sala (kapacitet,oznaka,idFC) values (50,'fc1s2', 1);
+insert into sala (kapacitet,oznaka,idFC) values (10,'fc2s1', 2);
+insert into sala (kapacitet,oznaka,idFC) values (5,'fc2s2', 2);
+insert into sala (kapacitet,oznaka,idFC) values (15,'fc3s1', 3);
+insert into sala (kapacitet,oznaka,idFC) values (23,'fc3s2', 3);
 
---testiranje termina
-
-insert into termin(broj_prijavljenih,cena,datum) values (0,1000,'2021-05-14');
-insert into termin(broj_prijavljenih,cena,datum) values (0,1200,'2021-05-14');
-insert into termin(broj_prijavljenih,cena,datum) values (0,1000,'2021-05-15');
-insert into termin(broj_prijavljenih,cena,datum) values (0,1000,'2021-05-15');
-insert into termin(broj_prijavljenih,cena,datum) values (0,500,'2021-05-15');
 --testiranje fitnes centra
 insert into fitness_centar(adresa,broj_telefona_centrale,email,naziv)
 values ('Laze Kostica 1','021456123','extremebulevar@gmail.com','Extreme Bulevar');
@@ -91,6 +84,15 @@ insert into FITNESS_CENTAR_SALE (FITNESS_CENTAR_ID,SALE_ID) values (2,3);
 insert into FITNESS_CENTAR_SALE (FITNESS_CENTAR_ID,SALE_ID) values (2,4);
 insert into FITNESS_CENTAR_SALE (FITNESS_CENTAR_ID,SALE_ID) values (3,5);
 insert into FITNESS_CENTAR_SALE (FITNESS_CENTAR_ID,SALE_ID) values (3,6);
+--testiranje termina
+insert into termin (cena, datumivreme, trening_id)
+values (300, '2021-08-08', 1);
+insert into termin (cena, datumivreme, trening_id)
+values (400, '2021-08-08', 2);
+insert into termin (cena, datumivreme, trening_id)
+values (500, '2021-08-08', 3);
+insert into termin (cena, datumivreme, trening_id)
+values (300, '2021-08-08', 4);
 
 
 

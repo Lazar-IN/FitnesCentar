@@ -15,39 +15,35 @@
     <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 </head>
-
 <body>
-
     <div>
         <img src="images/logo.png" width="350" alt="Logo"/>
     </div>
-
     <div id="allTrenings">
         <h1>Treninzi</h1>
-        <br><br>
+        <br>
         <div class="container">
-
-
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span>Click To Apply Filter</button>
-                </h3>
-
+            <div class="wrap">
+                <div class="search">
+                    <input type="text" class="searchTerm" placeholder="Pretrazi" id="myInput">
+                </div>
             </div>
-
-
-
-
+            <br><br>
+            <br><br>
             <table id="treninzi" class="display" width="75%" align="center">
                 <tr>
-                    <th onclick="sortTable(0)">Id</th>
-                    <th onclick="sortTable(1)">Naziv</th>
-                    <th onclick="sortTable(2)">Nivo treninga</th>
-                    <th onclick="sortTable(3)">Trajanje u nedeljama</th>
-                    <th onclick="sortTable(4)">Dana u nedelji</th>
-                    <th onclick="sortTable(5)">Tip treninga</th>
+                    <th>Id</th>
+                    <th>Naziv</th>
+                    <th>Nivo treninga</th>
+                    <th>Dana u nedelji</th>
+                    <th>Trajanje u nedeljama</th>
+                    <th>Tip treninga</th>
+                    <th>Termini</th>
                 </tr>
             </table>
+            <div class="panel-heading">
+                <p><button onclick="sortTable()">Sortiraj po imenu</button></p>
+            </div>
         </div>
     </div>
 

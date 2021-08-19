@@ -23,10 +23,15 @@ $(document).on("submit", "form", function (event) {
             console.log(response);
 
             alert("Fitnes centar " + response.naziv + " je uspešno kreiran!");
-            window.location.href = "index.html";
+            //window.location.href = "index.html";
+            //window.location.href = "pocetnaAdmin.html?adminId="+ adminId;
         },
         error: function () {
             alert("Greška pri dodavanju fitness centra!");
         }
     });
 });
+
+function goBack() {
+    window.history.back();
+}

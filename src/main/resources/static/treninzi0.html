@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="sr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Treninzi</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300&display=swap" rel="stylesheet">
+  <link href="CSS/stiloviTreninzi.css" rel="stylesheet" type="text/css">
+  <script type="text/css" language="css" src="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"></script>
+  <script src="JS/jquery.min.js"></script>
+  <script src="JS/jquery.validate.min.js"></script>
+  <script src="JS/pretragaTreninga.js"></script>
+  <script src="JS/treninzi0.js"></script>
+  <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+<div>
+  <img src="images/logo.png" width="350" alt="Logo"/>
+</div>
+<div id="allTrenings">
+  <h1>Treninzi</h1>
+  <br>
+  <div class="container">
+    <div class="wrap">
+      <div class="search">
+        <input type="text" class="searchTerm" placeholder="Pretrazi" id="myInput">
+      </div>
+    </div>
+    <br><br>
+    <br><br>
+    <table id="treninzi" class="display" width="75%" align="center">
+      <tr>
+        <th>Id</th>
+        <th>Naziv</th>
+        <th>Nivo treninga</th>
+        <th>Dana u nedelji</th>
+        <th>Trajanje u nedeljama</th>
+        <th>Tip treninga</th>
+      </tr>
+    </table>
+    <div class="panel-heading">
+      <p><button onclick="sortTable()">Sortiraj po imenu</button></p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Izmena sale</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300&display=swap" rel="stylesheet">
+  <link href="CSS/stiloviDodavanjeFitnessCentra.css" rel="stylesheet" type="text/css">
+  <script src="JS/jquery.min.js"></script>
+  <script src="JS/jquery.validate.min.js"></script>
+  <script src="JS/izmeniSalu.js"></script>
+</head>
+<body>
+<img src="images/logo.png" width="240" alt="Logo"/>
+<div class="container">
+  <h1>Izmena sale</h1>
+  <hr>
+  <form id="dodajSaluForm">
+
+    <label for="fitnesCentar"><b>Fitness centar</b></label>
+    <input type="text" placeholder="Unesite id fitnes centra" id="fitnesCentar" required>
+
+    <label for="kapacitet"><b>Kapacitet</b></label>
+    <input type="text" placeholder="Unesite kapacitet" id="kapacitet" required>
+
+    <label for="oznaka"><b>Oznaka</b></label>
+    <input type="text" placeholder="Unesite oznaku" id="oznaka" required>
+
+    <div class="clearfix">
+      <button type="submit" class="signupbtn">Izmeni</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>

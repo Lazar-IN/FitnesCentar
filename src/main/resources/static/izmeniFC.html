@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="sr">
 <head>
-  <meta charset="UTF-8">
-  <title>Dodavanje novog fitness centra</title>
+    <meta charset="UTF-8">
+    <title>Izmeni fitnes centar</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300&display=swap" rel="stylesheet">
-  <link href="CSS/stiloviDodavanjeFitnessCentra.css" rel="stylesheet" type="text/css">
+  <link href="CSS/stiloviIzmeniFC.css" rel="stylesheet" type="text/css">
   <script src="JS/jquery.min.js"></script>
   <script src="JS/jquery.validate.min.js"></script>
-  <script src="JS/dodavanjeFitnessCentra.js"></script>
+  <script src="JS/izmeniFC.js"></script>
 </head>
-
 <body>
 
 <img src="images/logo.png" width="240" alt="Logo"/>
 
-<form action="GET" name="dodavanjeFitnessCentra">
+<form action="GET" name="izmenaFitnessCentra" id="izmenaFitnessCentra">
   <div class="container" id="centre">
-    <h1>Dodavanje novog fitness centra</h1>
+    <h1>Izmeni fitnes centar</h1>
     <hr>
     <label><b>Naziv:</b></label>
     <input type="text" placeholder="Unesite naziv" name="naziv" id="naziv" required>
@@ -37,6 +35,6 @@
   </div>
 </form>
 
-</body>
 
+</body>
 </html>

@@ -45,12 +45,16 @@ public class Trener implements Serializable {
     @OneToMany(mappedBy = "trener", fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<Trening> drziTreninge = new HashSet<Trening>();
 
-    @OneToMany( fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval = true)
-    private Set<Ocena> listaOcena = new HashSet<Ocena>();
+    //@OneToMany( fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval = true)
+    //private Set<Ocena> listaOcena = new HashSet<Ocena>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private FitnessCentar fitnessCentar;
 
     public Trener(){}   //TREBA
     //KONSTRUKTOR
-    public Trener(Long id, String korisnickoIme, String lozinka, String ime, String prezime, String kontaktTelefon, String email, LocalDate datumRodjenja, ULOGA uloga, Boolean aktivan, Long prosecnaOcena, Set<Trening> drziTreninge, Set<Ocena> listaOcena) {
+
+    public Trener(Long id, String korisnickoIme, String lozinka, String ime, String prezime, String kontaktTelefon, String email, LocalDate datumRodjenja, ULOGA uloga, Boolean aktivan, Long prosecnaOcena, Set<Trening> drziTreninge, FitnessCentar fitnessCentar) {
         this.id = id;
         this.korisnickoIme = korisnickoIme;
         this.lozinka = lozinka;
@@ -59,16 +63,14 @@ public class Trener implements Serializable {
         this.kontaktTelefon = kontaktTelefon;
         this.email = email;
         this.datumRodjenja = datumRodjenja;
-        this.uloga = ULOGA.TRENER;
+        this.uloga = uloga;
         this.aktivan = aktivan;
-        this.prosecnaOcena = prosecnaOcena;
+        this.prosecnaOcena = Long.valueOf(0);
         this.drziTreninge = drziTreninge;
-        this.listaOcena = listaOcena;
+        this.fitnessCentar = fitnessCentar;
     }
     //KONSTRUKTOR,bez id-a
-    public Trener(String korisnickoIme, String lozinka, String ime, String prezime,
-                  String kontaktTelefon, String email, LocalDate datumRodjenja,
-                  Boolean aktivan, Set<Trening> drziTreninge,Set<Ocena> listaOcena) {
+    public Trener(String korisnickoIme, String lozinka, String ime, String prezime, String kontaktTelefon, String email, LocalDate datumRodjenja, ULOGA uloga, Boolean aktivan, Long prosecnaOcena, Set<Trening> drziTreninge, FitnessCentar fitnessCentar) {
         this.korisnickoIme = korisnickoIme;
         this.lozinka = lozinka;
         this.ime = ime;
@@ -76,11 +78,11 @@ public class Trener implements Serializable {
         this.kontaktTelefon = kontaktTelefon;
         this.email = email;
         this.datumRodjenja = datumRodjenja;
-        this.uloga = ULOGA.TRENER;
+        this.uloga = uloga;
         this.aktivan = aktivan;
+        this.prosecnaOcena = prosecnaOcena;
         this.drziTreninge = drziTreninge;
-        this.listaOcena = listaOcena;
-        this.prosecnaOcena = Long.valueOf(0);
+        this.fitnessCentar = fitnessCentar;
     }
     //KONSTRUKTOR BEZ LISTE,bez id-a
     public Trener(String korisnickoIme, String lozinka, String ime, String prezime,
@@ -111,6 +113,17 @@ public class Trener implements Serializable {
         this.prosecnaOcena = prosecnaOcena;
     }
 
+    public Trener(String korisnickoIme, String lozinka, String ime, String prezime, String kontaktTelefon, String email, LocalDate datumRodjenja, ULOGA uloga) {
+        this.korisnickoIme = korisnickoIme;
+        this.lozinka = lozinka;
+        this.ime = ime;
+        this.prezime = prezime;
+        this.kontaktTelefon = kontaktTelefon;
+        this.email = email;
+        this.datumRodjenja = datumRodjenja;
+        this.uloga = uloga;
+    }
+
     public Long getId() {
         return id;
     }
@@ -123,7 +136,7 @@ public class Trener implements Serializable {
         return korisnickoIme;
     }
 
-    public void setKorisnickoIme(String koristinckoIme) {
+    public void setKorisnickoIme(String korisnickoIme) {
         this.korisnickoIme = korisnickoIme;
     }
 
@@ -207,12 +220,12 @@ public class Trener implements Serializable {
         this.drziTreninge = drziTreninge;
     }
 
-    public Set<Ocena> getListaOcena() {
-        return listaOcena;
+    public FitnessCentar getFitnessCentar() {
+        return fitnessCentar;
     }
 
-    public void setListaOcena(Set<Ocena> listaOcena) {
-        this.listaOcena = listaOcena;
+    public void setFitnessCentar(FitnessCentar fitnessCentar) {
+        this.fitnessCentar = fitnessCentar;
     }
 
     public void dodajTreningNaListu(Trening t){
@@ -229,6 +242,7 @@ public class Trener implements Serializable {
             System.out.println("Trening "+t.getNaziv()+" nije uklonjen sa liste!");
         }
     }
+    /*
     public  void dodajTermin(FitnessCentar fc,Trening trening,int cena, LocalDate datum, Sala sala){
         Set<Sala> sale = new HashSet<Sala>();
         sale.add(sala);
@@ -236,6 +250,8 @@ public class Trener implements Serializable {
         drziTreninge.add(trening);
         fc.trenerDodajeTermin(this,termin,sala);
     }
+
+     */
     /*
     public void dodajSaluZaTermin(FitnessCentar fc,Termin termin,Sala sala){
         if(fc.getTreneri().contains(this)){
@@ -246,6 +262,7 @@ public class Trener implements Serializable {
     }
 
      */
+    /*
     public void oceni(Ocena o){ //KORISTITI SAMO U KLASI CLAN
             listaOcena.add(o);
         Long sum= Long.valueOf(0);
@@ -257,6 +274,7 @@ public class Trener implements Serializable {
             prosecnaOcena=avrg;
 
     }
+     */
     public void stampaj()
     {
         System.out.println("------"+this.uloga+"------");

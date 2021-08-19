@@ -15,8 +15,6 @@ $(document).ready(function () {
                 row += "<th>" + response[i].trajanjeUNedeljama + "</th>";
                 row += "<th>" + response[i].danaUNedelji + "</th>";
                 row += "<th>" + response[i].tipTreninga + "</th>";
-                let btn = "<button class='btnTermin' data-id=" + response[i].id + ">vidi termine</button>";
-                row += "<td>" + btn + "</td>";
                 row += "</tr>";
 
                 $('#treninzi').append(row);
@@ -57,11 +55,4 @@ $(document).ready(function(){
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
     });
-});
-
-$(document).on('click', '.btnTermin', function () {
-    let treningId = this.dataset.id;
-    let urlParams = new URLSearchParams(window.location.search);
-    let clanId = urlParams.get('clanId');
-    window.location.href = "Termin.html?treningId="  + treningId + "&clanId=" + clanId;
 });

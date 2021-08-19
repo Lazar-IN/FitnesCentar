@@ -198,6 +198,7 @@ public class FitnessCentar implements Serializable {
     }
 
      */
+    /*
     //STAMPA TERMINE U FC
     public void pregledTermina(){
         if(raspored.isEmpty()){
@@ -211,6 +212,8 @@ public class FitnessCentar implements Serializable {
         }
 
     }
+
+     */
 
     public void stampaj(){
         System.out.println(" ");

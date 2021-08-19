@@ -1,4 +1,3 @@
-//NOVOOOOOOOOOOOOOOOOOOOO
 $(document).on("submit", "#login", function (event) {
     event.preventDefault();
 
@@ -23,8 +22,8 @@ $(document).on("submit", "#login", function (event) {
             success: function (res) {
                 alert("Uspesno ste se ulogovali kao trener");
                 let trenerId = res.id;
-                window.location.href = "../pocetnaTrener.html";
-                //window.location.href = "pocetnaTrener.html?trenerId=" + trenerId;
+                //window.location.href = "../pocetnaTrener.html";
+                window.location.href = "pocetnaTrener.html?trenerId=" + trenerId;
             },
             error: function () {
                 alert("Pogresna lozinka ili korisnicko ime!");
@@ -47,8 +46,8 @@ $(document).on("submit", "#login", function (event) {
             success: function (res) {
                 alert("Uspesno ste se ulogovali kao clan");
                 let clanId = res.id;
-                window.location.href = "../pocetnaClan.html";
-                //window.location.href = "pocetnaClan.html?clanId=" + clanId;
+                //window.location.href = "../pocetnaClan.html";
+                window.location.href = "pocetnaClan.html?clanId=" + clanId;
             },
             error: function () {
                 alert("Pogresna lozinka ili korisnicko ime!");
@@ -70,8 +69,8 @@ $(document).on("submit", "#login", function (event) {
             success: function (res) {
                 alert("Uspesno ste se ulogovali kao administrator");
                 let adminId = res.id;
-                window.location.href = "../pocetnaAdmin.html";
-                //window.location.href = "pocetnaAdmin.html?adminId=" + adminId;
+                //window.location.href = "../pocetnaAdmin.html";
+                window.location.href = "pocetnaAdmin.html?adminId=" + adminId;
             },
             error: function () {
                 alert("Pogresna lozinka ili korisnicko ime!");

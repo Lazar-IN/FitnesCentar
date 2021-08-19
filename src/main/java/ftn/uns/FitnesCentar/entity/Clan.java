@@ -233,6 +233,7 @@ public class Clan implements Serializable {
     }
 
     ////////////////////////////////////////////////
+    /*
     public void oceni(Termin termin, Trener trener, int ocena){
         if(ocena<6 && ocena>0){
             Ocena o = new Ocena(ocena,termin,this,trener);
@@ -244,6 +245,8 @@ public class Clan implements Serializable {
             System.out.println("Ocena je izvan opsega(0<ocena>6)");
         }
     }
+
+     */
     ////////////////////////////////////////////////
     public void stampaj()
     {

@@ -1,23 +1,21 @@
 package ftn.uns.FitnesCentar.entity.dto;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class TerminDTO {
 
     private Long id;
     private double cena;
-    private LocalDate datum;
-    private int brojPrijavljenih;
+    private LocalDateTime datumIVreme;
 
     public TerminDTO() {
     }
 
-    public TerminDTO(Long id, double cena, LocalDate datum,
-                     int brojPrijavljenih) {
+    public TerminDTO(Long id, double cena, LocalDateTime datumIVreme) {
         this.id = id;
         this.cena = cena;
-        this.datum = datum;
-        this.brojPrijavljenih = brojPrijavljenih;
+        this.datumIVreme = datumIVreme;
     }
 
     public Long getId() {
@@ -36,19 +34,11 @@ public class TerminDTO {
         this.cena = cena;
     }
 
-    public LocalDate getDatum() {
-        return datum;
+    public LocalDateTime getDatumIVreme() {
+        return datumIVreme;
     }
 
-    public void setDatum(LocalDate datum) {
-        this.datum = datum;
-    }
-
-    public int getBrojPrijavljenih() {
-        return brojPrijavljenih;
-    }
-
-    public void setBrojPrijavljenih(int brojPrijavljenih) {
-        this.brojPrijavljenih = brojPrijavljenih;
+    public void setDatumIVreme(LocalDateTime datumIVreme) {
+        this.datumIVreme = datumIVreme;
     }
 }

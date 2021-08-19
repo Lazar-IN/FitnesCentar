@@ -2,7 +2,9 @@ package ftn.uns.FitnesCentar.controller;
 
 import ftn.uns.FitnesCentar.entity.Termin;
 import ftn.uns.FitnesCentar.entity.dto.TerminDTO;
+import ftn.uns.FitnesCentar.service.FitnessCentarService;
 import ftn.uns.FitnesCentar.service.TerminService;
+import ftn.uns.FitnesCentar.service.TreningService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,10 +19,14 @@ import java.util.List;
 public class TerminController {
 
     private final TerminService terminService;
+    private final TreningService treningService;
+    private final FitnessCentarService fitnessCentarService;
 
     @Autowired
-    public TerminController(TerminService terminService){
+    public TerminController(TerminService terminService, TreningService treningService, FitnessCentarService fitnesCentarService) {
         this.terminService = terminService;
+        this.treningService = treningService;
+        this.fitnessCentarService = fitnesCentarService;
     }
     //METODA ZA DOBAVLJANJE JEDNOG TERMINA
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -30,14 +36,13 @@ public class TerminController {
         TerminDTO terminDTO = new TerminDTO();
         terminDTO.setId(termin.getId());
         terminDTO.setCena(termin.getCena());
-        terminDTO.setDatum(termin.getDatum());
-        terminDTO.setBrojPrijavljenih(termin.getBrojPrijavljenih());
+        terminDTO.setDatumIVreme(termin.getDatumIVreme());
 
         return new ResponseEntity<>(terminDTO, HttpStatus.OK);
     }
-    //METODA ZA DOBAVLJANJE SVIH CLANOVA
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<TerminDTO>> getTermin() {
+    //METODA ZA DOBAVLJANJE SVIH TERMINA
+    @GetMapping(value = "/zaTrening/{treningId}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<TerminDTO>> getTermins() {
 
         List<Termin> terminList = this.terminService.findAll();
 
@@ -45,24 +50,23 @@ public class TerminController {
 
         for (Termin termin : terminList) {
             TerminDTO terminDTO = new TerminDTO(termin.getId(),
-                    termin.getCena(),termin.getDatum(),termin.getBrojPrijavljenih());
+                    termin.getCena(),termin.getDatumIVreme());
 
             terminDTOS.add(terminDTO);
         }
         return new ResponseEntity<>(terminDTOS, HttpStatus.OK);
     }
     //METODA ZA KREIRANJE NOVOG TERMINA
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/zaTrening/{treningId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<TerminDTO> createTermin(@RequestBody TerminDTO terminDTO) throws Exception {
 
         Termin termin = new Termin(terminDTO.getId(),terminDTO.getCena(),
-                terminDTO.getDatum(),terminDTO.getBrojPrijavljenih());
+                terminDTO.getDatumIVreme());
 
         Termin newTermin = terminService.save(termin);
 
         TerminDTO newTerminDTO = new TerminDTO(newTermin.getId(),
-                newTermin.getCena(),newTermin.getDatum(),
-                newTermin.getBrojPrijavljenih());
+                newTermin.getCena(),newTermin.getDatumIVreme());
 
         return new ResponseEntity<>(newTerminDTO, HttpStatus.CREATED);
     }
@@ -71,21 +75,20 @@ public class TerminController {
     public ResponseEntity<TerminDTO> updateTermin(@PathVariable Long id, @RequestBody TerminDTO terminDTO) throws Exception {
 
         Termin termin = new Termin(terminDTO.getId(),terminDTO.getCena(),
-                terminDTO.getDatum(),terminDTO.getBrojPrijavljenih());
+                terminDTO.getDatumIVreme());
 
         termin.setId(id);
 
         Termin updatedTermin = terminService.update(termin);
 
         TerminDTO updatedTerminDTO = new TerminDTO(updatedTermin.getId(),
-                updatedTermin.getCena(),updatedTermin.getDatum(),
-                updatedTermin.getBrojPrijavljenih());
+                updatedTermin.getCena(),updatedTermin.getDatumIVreme());
 
         return new ResponseEntity<>(updatedTerminDTO, HttpStatus.OK);
     }
     //METODA ZA BRISANJE JEDNOG TERMINA
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> deleteClan(@PathVariable Long id) {
+    @DeleteMapping(value = "/zaTrening/{id}")
+    public ResponseEntity<Void> deleteTermin(@PathVariable Long id) {
         this.terminService.delete(id);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

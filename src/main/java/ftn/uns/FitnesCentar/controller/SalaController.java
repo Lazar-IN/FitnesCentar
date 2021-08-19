@@ -31,6 +31,7 @@ public class SalaController {
         salaDTO.setId(sala.getId());
         salaDTO.setKapacitet(sala.getKapacitet());
         salaDTO.setOznaka(sala.getOznaka());
+        salaDTO.setIdFC(sala.getIdFC());
 
         return new ResponseEntity<>(salaDTO, HttpStatus.OK);
     }
@@ -44,7 +45,7 @@ public class SalaController {
 
         for (Sala sala : salaList) {
             SalaDTO salaDTO = new SalaDTO(sala.getId(),sala.getKapacitet(),
-                    sala.getOznaka());
+                    sala.getOznaka(), sala.getIdFC());
 
             salaDTOS.add(salaDTO);
         }
@@ -54,13 +55,13 @@ public class SalaController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<SalaDTO> createSala(@RequestBody SalaDTO salaDTO) throws Exception {
 
-        Sala sala = new Sala(salaDTO.getId(),
+        Sala sala = new Sala(salaDTO.getId(),salaDTO.getIdFC(),
                 salaDTO.getKapacitet(),salaDTO.getOznaka());
 
         Sala newSala = salaService.save(sala);
 
-        SalaDTO newSalaDTO = new SalaDTO(newSala.getId(),
-                newSala.getKapacitet(),newSala.getOznaka());
+        SalaDTO newSalaDTO = new SalaDTO(newSala.getId(),newSala.getIdFC(),
+                newSala.getKapacitet(),newSala.getOznaka(), newSala.getIdFC());
 
         return new ResponseEntity<>(newSalaDTO, HttpStatus.CREATED);
     }
@@ -68,7 +69,7 @@ public class SalaController {
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<SalaDTO> updateSala(@PathVariable Long id, @RequestBody SalaDTO salaDTO) throws Exception {
 
-        Sala sala = new Sala(salaDTO.getId(),
+        Sala sala = new Sala(salaDTO.getId(), salaDTO.getIdFC(),
                 salaDTO.getKapacitet(),salaDTO.getOznaka());
 
         sala.setId(id);
@@ -76,13 +77,13 @@ public class SalaController {
         Sala updatedSala = salaService.update(sala);
 
         SalaDTO updatedSalaDTO = new SalaDTO(updatedSala.getId(),
-                updatedSala.getKapacitet(), updatedSala.getOznaka());
+                updatedSala.getKapacitet(), updatedSala.getOznaka(), updatedSala.getIdFC());
 
         return new ResponseEntity<>(updatedSalaDTO, HttpStatus.OK);
     }
     //METODA ZA BRISANJE JEDNE SALE
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> deleteClan(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteSala(@PathVariable Long id) {
         this.salaService.delete(id);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

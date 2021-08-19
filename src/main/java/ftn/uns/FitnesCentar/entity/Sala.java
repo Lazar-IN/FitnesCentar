@@ -14,37 +14,79 @@ public class Sala implements Serializable {
     @Column(name = "kapacitet")
     private int kapacitet;
 
-    @Column(name = "oznaka", nullable = false, unique = true)
+    @Column(name = "oznaka", nullable = false)
     private String oznaka;
+
+    @Column(name = "idFC")
+    private int idFC;
 
     @OneToMany(mappedBy = "sala", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Termin> terminskaLista = new HashSet<Termin>();
 
     public Sala() {}    //TREBA
     //KONSTRUKTOR
-    public Sala(Long id, int kapacitet, String oznaka, Set<Termin> terminskaLista) {
+
+    public Sala(Long id, int kapacitet, String oznaka, int idFC, Set<Termin> terminskaLista) {
         this.id = id;
         this.kapacitet = kapacitet;
         this.oznaka = oznaka;
+        this.idFC = idFC;
         this.terminskaLista = terminskaLista;
     }
+
     //KONSTRUKTOR,bez id-a
     public Sala(int kapacitet, String oznaka, Set<Termin> terminskaLista) {
         this.kapacitet = kapacitet;
         this.oznaka = oznaka;
         this.terminskaLista = terminskaLista;
     }
+
+    public Sala(int kapacitet, String oznaka, int idFC, Set<Termin> terminskaLista) {
+        this.kapacitet = kapacitet;
+        this.oznaka = oznaka;
+        this.idFC = idFC;
+        this.terminskaLista = terminskaLista;
+    }
+
     //KONSTRUKTOR BEZ TERMINSKE LISTE,bez id-a
     public Sala(int kapacitet, String oznaka) {
         this.kapacitet = kapacitet;
         this.oznaka = oznaka;
     }
+    public Sala(int idFC, int kapacitet, String oznaka) {
+        this.idFC = idFC;
+        this.kapacitet = kapacitet;
+        this.oznaka = oznaka;
+    }
+
+    public Sala(int kapacitet, String oznaka, int idFC) {
+        this.kapacitet = kapacitet;
+        this.oznaka = oznaka;
+        this.idFC = idFC;
+    }
+
+
     //KONSTRUKTOR ZA POTREBE CONTROLLERA
     public Sala(Long id, int kapacitet, String oznaka) {
         this.id = id;
         this.kapacitet = kapacitet;
         this.oznaka = oznaka;
     }
+    public Sala(Long id, int kapacitet, String oznaka, int idFC) {
+        this.id = id;
+        this.kapacitet = kapacitet;
+        this.oznaka = oznaka;
+        this.idFC = idFC;
+    }
+
+    public Sala(Long id, int idFC, int kapacitet, String oznaka) {
+        this.id = id;
+        this.idFC = idFC;
+        this.kapacitet = kapacitet;
+        this.oznaka = oznaka;
+
+    }
+
 
     public void setId(Long id) {
         this.id = id;
@@ -69,6 +111,13 @@ public class Sala implements Serializable {
         this.oznaka = oznaka;
     }
 
+    public int getIdFC() {
+        return idFC;
+    }
+
+    public void setIdFC(int idFC) {
+        this.idFC = idFC;
+    }
 
     public Set<Termin> getTerminskaLista() {
         return terminskaLista;

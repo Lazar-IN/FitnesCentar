@@ -3,6 +3,7 @@ package ftn.uns.FitnesCentar.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,136 +13,62 @@ public class Termin implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne//(cascade = CascadeType.ALL)
-    private Trening trening;
+    @Column
+    private Double cena;
 
-    @Column(name = "cena")
-    private double cena;
+    @Column
+    private LocalDateTime datumIVreme;
 
-    @Column(name = "datum")
-    private LocalDate datum;
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Sala sala;
 
-    @Column(name = "naziv")
-    private String naziv;
-    @Column(name = "opis")
-    private String opis;
-    @Column(name = "tip")
-    private TIP tip;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Clan clan;
 
+    @OneToMany(mappedBy = "termin",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<OdradjeniTrening> odradjeniTreninzi = new HashSet<>();
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private FitnessCentar fitnessCentar;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)//mappedBy = "termin",   SA OVIM NE RADI
-    private Set<Clan> prijavljeniClanovi = new HashSet<Clan>();
+    @Column
+    private int idFC;
 
-    @Column(name = "broj_prijavljenih")
-    private int brojPrijavljenih;
-    //PROVERITI
-    @OneToMany( fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval = true)
-    private Set<Ocena> listaOcena = new HashSet<Ocena>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Trening trening;
 
-    public Termin() {}  //TREBA
-    //KONSTRUKTOR
+    @Column
+    private int idT;
 
-    public Termin(Long id, Trening trening, double cena, LocalDate datum,
-                  Sala sala, String naziv, String opis, TIP tip, Set<Clan> prijavljeniClanovi,
-                  int brojPrijavljenih, Set<Ocena> listaOcena) {
-        this.id = id;
-        this.trening = trening;
-        this.cena = cena;
-        this.datum = datum;
-        this.sala = sala;
-        this.naziv = trening.getNaziv();
-        this.opis = trening.getOpis();
-        this.tip = trening.getTipTreninga();
-        this.prijavljeniClanovi = prijavljeniClanovi;
-        this.brojPrijavljenih = brojPrijavljenih;
-        this.listaOcena = listaOcena;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Clan odradjeniTrening;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Clan ocena;
+
+    public Termin() {
     }
 
-    public Termin(Trening trening, double cena, LocalDate datum,
-                  String naziv, String opis, TIP tip) {
-        this.trening = trening;
-        this.cena = cena;
-        this.datum = datum;
-        this.naziv = trening.getNaziv();
-        this.opis = trening.getOpis();
-        this.tip = trening.getTipTreninga();
-    }
-
-    //KONSTRUKTOR,bez id-a
-    public Termin(Trening trening, double cena, LocalDate datum,
-                  Set<Sala> sale) {
-        this.trening = trening;
-        this.cena = cena;
-        this.datum = datum;
-        this.sala = sala;
-        this.brojPrijavljenih = 0;
-    }
-
-    //KONSTRUKTOR BEZ LISTI,bez id-a
-    public Termin(Trening trening, double cena, LocalDate datum) {
-        this.trening = trening;
-        this.cena = cena;
-        this.datum = datum;
-        this.brojPrijavljenih = 0;
-    }
-    //KONSTRUKTOR ZA POTREBE KONTROLERA
-    public Termin(Long id, double cena, LocalDate datum, int brojPrijavljenih) {
+    public Termin(Long id, Double cena, LocalDateTime datumIVreme, Sala sala,
+                  Clan clan, Set<OdradjeniTrening> odradjeniTreninzi, FitnessCentar fitnessCentar, Trening trening, Clan odradjeniTrening, Clan ocena) {
         this.id = id;
         this.cena = cena;
-        this.datum = datum;
-        this.brojPrijavljenih = brojPrijavljenih;
-    }
-
-    public Trening getTrening() {
-        return trening;
-    }
-
-    public void setTrening(Trening trening) {
-        this.trening = trening;
-    }
-
-    public double getCena() {
-        return cena;
-    }
-
-    public void setCena(double cena) {
-        this.cena = cena;
-    }
-
-    public LocalDate getDatum() {
-        return datum;
-    }
-
-    public void setDatum(LocalDate datum) {
-        this.datum = datum;
-    }
-
-    public Sala getSala() {
-        return sala;
-    }
-
-    public void setSala(Sala sala) {
+        this.datumIVreme = datumIVreme;
         this.sala = sala;
+        this.clan = clan;
+        this.odradjeniTreninzi = odradjeniTreninzi;
+        this.fitnessCentar = fitnessCentar;
+        this.trening = trening;
+        this.odradjeniTrening = odradjeniTrening;
+        this.ocena = ocena;
+        this.idFC= Math.toIntExact(fitnessCentar.getId());
+        this.idT = Math.toIntExact(trening.getId());
     }
 
-    public Set<Clan> getPrijavljeniClanovi() {
-        return prijavljeniClanovi;
-    }
-
-    public void setPrijavljeniClanovi(Set<Clan> prijavljeniClanovi) {
-        this.prijavljeniClanovi = prijavljeniClanovi;
-    }
-
-    public int getBrojPrijavljenih() {
-        return brojPrijavljenih;
-    }
-
-    public void setBrojPrijavljenih(int brojPrijavljenih) {
-        this.brojPrijavljenih = brojPrijavljenih;
+    public Termin(Long id, double cena, LocalDateTime datumIVreme) {
+        this.id = id;
+        this.cena = cena;
+        this.datumIVreme = datumIVreme;
     }
 
     public Long getId() {
@@ -152,30 +79,79 @@ public class Termin implements Serializable {
         this.id = id;
     }
 
-    public Set<Ocena> getListaOcena() {
-        return listaOcena;
+    public Double getCena() {
+        return cena;
     }
 
-    public void setListaOcena(Set<Ocena> listaOcena) {
-        this.listaOcena = listaOcena;
+    public void setCena(Double cena) {
+        this.cena = cena;
     }
+
+    public LocalDateTime getDatumIVreme() {
+        return datumIVreme;
+    }
+
+    public void setDatumIVreme(LocalDateTime datumIVreme) {
+        this.datumIVreme = datumIVreme;
+    }
+
+    public Sala getSala() {
+        return sala;
+    }
+
+    public void setSala(Sala sala) {
+        this.sala = sala;
+    }
+
+    public Clan getClan() {
+        return clan;
+    }
+
+    public void setClan(Clan clan) {
+        this.clan = clan;
+    }
+
+    public Set<OdradjeniTrening> getOdradjeniTreninzi() {
+        return odradjeniTreninzi;
+    }
+
+    public void setOdradjeniTreninzi(Set<OdradjeniTrening> odradjeniTreninzi) {
+        this.odradjeniTreninzi = odradjeniTreninzi;
+    }
+
+    public FitnessCentar getFitnessCentar() {
+        return fitnessCentar;
+    }
+
+    public void setFitnessCentar(FitnessCentar fitnessCentar) {
+        this.fitnessCentar = fitnessCentar;
+    }
+
+    public Trening getTrening() {
+        return trening;
+    }
+
+    public void setTrening(Trening trening) {
+        this.trening = trening;
+    }
+
+    public Clan getOdradjeniTrening() {
+        return odradjeniTrening;
+    }
+
+    public void setOdradjeniTrening(Clan odradjeniTrening) {
+        this.odradjeniTrening = odradjeniTrening;
+    }
+
+    public Clan getOcena() {
+        return ocena;
+    }
+
+    public void setOcena(Clan ocena) {
+        this.ocena = ocena;
+    }
+
     /*
-    public void dodajSalu(Sala s){
-        if(sale.add(s)){
-            System.out.println("Sala uspesno dodata.");
-        } else {
-            System.out.println("Sala nije dodata!");
-        }
-    }
-    public void ukloniSalu(Sala s){
-        if(sale.remove(s)){
-            System.out.println("Sala uspesno uklonjena.");
-        } else {
-            System.out.println("Sala nije uklonjena!");
-        }
-    }
-
-     */
     public void dodajClana(Clan c){
         if(prijavljeniClanovi.add(c)){
             brojPrijavljenih++;
@@ -228,4 +204,7 @@ public class Termin implements Serializable {
                 ", brojPrijavljenih=" + brojPrijavljenih +
                 '}'+"\r\n"+"\r\n";
     }
+
+     */
+
 }
