@@ -27,7 +27,7 @@ $(document).on("submit", "#dodajSaluForm", function (event) {
             console.log(res);
 
             alert("Sala " + res.id + " je uspešno kreirana!");
-            window.location.href = "http://localhost:8080/pocetnaAdmin.html";
+            window.location.href = "http://localhost:8080/pocetnaAdmin.html?adminId=1";
         },
         error: function () {
             alert("Greška prilikom dodavanja sale!");

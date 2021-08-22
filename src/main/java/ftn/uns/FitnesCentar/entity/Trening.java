@@ -11,7 +11,7 @@ public class Trening implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
 
-    @Column(unique = true, name = "naziv",nullable = false)
+    @Column(name = "naziv",nullable = false)
     private String naziv;
 
     @Column(nullable = false, name = "nivo_treninga")
@@ -32,8 +32,11 @@ public class Trening implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Trener trener;//TREBA
 
+    /*
     @OneToMany(mappedBy = "trening",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<OdradjeniTrening> odradjeniTreninzi = new HashSet<>();
+
+     */
 
     @OneToMany(mappedBy = "trening",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Termin> termins = new HashSet<>();

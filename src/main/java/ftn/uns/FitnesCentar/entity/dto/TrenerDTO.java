@@ -3,6 +3,7 @@ package ftn.uns.FitnesCentar.entity.dto;
 import ftn.uns.FitnesCentar.entity.ULOGA;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class TrenerDTO {
 
@@ -41,6 +42,17 @@ public class TrenerDTO {
         this.id = id;
         this.korisnickoIme = korisnickoIme;
         this.lozinka = lozinka;
+    }
+    public TrenerDTO(Long id, String korisnickoIme, String lozinka, String ime, String prezime, String kontaktTelefon, String email, LocalDate datumRodjenja, ULOGA uloga){
+        this.id = id;
+        this.korisnickoIme = korisnickoIme;
+        this.lozinka = lozinka;
+        this.ime = ime;
+        this.prezime = prezime;
+        this.kontaktTelefon = kontaktTelefon;
+        this.email = email;
+        this.datumRodjenja = datumRodjenja;
+        this.uloga = ULOGA.TRENER;
     }
 
     public Long getId() {

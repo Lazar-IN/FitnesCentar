@@ -31,7 +31,6 @@ public class SalaController {
         salaDTO.setId(sala.getId());
         salaDTO.setKapacitet(sala.getKapacitet());
         salaDTO.setOznaka(sala.getOznaka());
-        salaDTO.setIdFC(sala.getIdFC());
 
         return new ResponseEntity<>(salaDTO, HttpStatus.OK);
     }
@@ -45,23 +44,39 @@ public class SalaController {
 
         for (Sala sala : salaList) {
             SalaDTO salaDTO = new SalaDTO(sala.getId(),sala.getKapacitet(),
-                    sala.getOznaka(), sala.getIdFC());
+                    sala.getOznaka());
 
             salaDTOS.add(salaDTO);
         }
         return new ResponseEntity<>(salaDTOS, HttpStatus.OK);
     }
-    //METODA ZA KREIRANJE NOVE SALE
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<SalaDTO> createSala(@RequestBody SalaDTO salaDTO) throws Exception {
+    //METODA ZA DOBAVLJANJE SVIH SALA IZ JEDNOG FITNESS CENTRA
+    @GetMapping(value = "/zaFitnessCentar/{fitnessCentarId}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<SalaDTO>> getSalas(@PathVariable("fitnessCentarId") Long fitnessCentarId) {
 
-        Sala sala = new Sala(salaDTO.getId(),salaDTO.getIdFC(),
+        List<Sala> salaList =this.salaService.findByFitnessCentarId(fitnessCentarId);
+
+        List<SalaDTO> salaDTOS = new ArrayList<>();
+
+        for (Sala sala : salaList) {
+            SalaDTO salaDTO = new SalaDTO(sala.getId(),sala.getKapacitet(),
+                    sala.getOznaka());
+
+            salaDTOS.add(salaDTO);
+        }
+        return new ResponseEntity<>(salaDTOS, HttpStatus.OK);
+    }
+    //METODA ZA KREIRANJE NOVE SALE u JEDNOM FITNESS CENTRU
+    @PostMapping(value = "/zaFitnessCentar/{fitnessCentarId}",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<SalaDTO> createSala(@RequestBody SalaDTO salaDTO, @PathVariable("fitnessCentarId") Long fitnessCentarId) throws Exception {
+
+        Sala sala = new Sala(salaDTO.getId(),
                 salaDTO.getKapacitet(),salaDTO.getOznaka());
 
         Sala newSala = salaService.save(sala);
 
-        SalaDTO newSalaDTO = new SalaDTO(newSala.getId(),newSala.getIdFC(),
-                newSala.getKapacitet(),newSala.getOznaka(), newSala.getIdFC());
+        SalaDTO newSalaDTO = new SalaDTO(newSala.getId(),
+                newSala.getKapacitet(),newSala.getOznaka());
 
         return new ResponseEntity<>(newSalaDTO, HttpStatus.CREATED);
     }
@@ -69,7 +84,7 @@ public class SalaController {
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<SalaDTO> updateSala(@PathVariable Long id, @RequestBody SalaDTO salaDTO) throws Exception {
 
-        Sala sala = new Sala(salaDTO.getId(), salaDTO.getIdFC(),
+        Sala sala = new Sala(salaDTO.getId(),
                 salaDTO.getKapacitet(),salaDTO.getOznaka());
 
         sala.setId(id);
@@ -77,7 +92,7 @@ public class SalaController {
         Sala updatedSala = salaService.update(sala);
 
         SalaDTO updatedSalaDTO = new SalaDTO(updatedSala.getId(),
-                updatedSala.getKapacitet(), updatedSala.getOznaka(), updatedSala.getIdFC());
+                updatedSala.getKapacitet(), updatedSala.getOznaka());
 
         return new ResponseEntity<>(updatedSalaDTO, HttpStatus.OK);
     }

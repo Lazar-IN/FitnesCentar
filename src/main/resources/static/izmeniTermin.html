@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Izmeni termin</title>
+    <link href="CSS/stiloviIzmeniTermin.css" rel="stylesheet" type="text/css">
+    <script src="JS/jquery.min.js"></script>
+    <script src="JS/jquery.validate.min.js"></script>
+    <script src="JS/izmeniTermin.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Izmena Termina</h1>
+    <hr>
+    <form id="dodajTerminForm">
+        <label for="cena"><b>Cena</b></label>
+        <input type="text" placeholder="Unesite cenu" id="cena" required>
+
+        <label for="datumIVreme"><b>Datum i vreme</b></label>
+        <input type="datetime-local" style="height: 35px" id="datumIVreme" required>
+        <br><br>
+
+            <button type="submit">Izmeni</button>
+    </form>
+</div>
+</body>
+</html>

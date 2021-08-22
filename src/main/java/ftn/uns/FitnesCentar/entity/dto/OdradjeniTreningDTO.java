@@ -1,5 +1,6 @@
 package ftn.uns.FitnesCentar.entity.dto;
 
+import ftn.uns.FitnesCentar.entity.NIVO;
 import ftn.uns.FitnesCentar.entity.TIP;
 
 import java.time.LocalDateTime;
@@ -8,17 +9,18 @@ public class OdradjeniTreningDTO {
     private Long id;
     private Integer ocena;
     private String naziv;
+    private NIVO nivoTreninga;
     private TIP tipTreninga;
     private LocalDateTime datumIVreme;
 
     public OdradjeniTreningDTO() {
     }
 
-    public OdradjeniTreningDTO(Long id, Integer ocena, String naziv,
-                               TIP tipTreninga, LocalDateTime datumIVreme) {
+    public OdradjeniTreningDTO(Long id, Integer ocena, String naziv, NIVO nivoTreninga, TIP tipTreninga, LocalDateTime datumIVreme) {
         this.id = id;
         this.ocena = ocena;
         this.naziv = naziv;
+        this.nivoTreninga = nivoTreninga;
         this.tipTreninga = tipTreninga;
         this.datumIVreme = datumIVreme;
     }
@@ -61,5 +63,13 @@ public class OdradjeniTreningDTO {
 
     public void setDatumIVreme(LocalDateTime datumIVreme) {
         this.datumIVreme = datumIVreme;
+    }
+
+    public NIVO getNivoTreninga() {
+        return nivoTreninga;
+    }
+
+    public void setNivoTreninga(NIVO nivoTreninga) {
+        this.nivoTreninga = nivoTreninga;
     }
 }

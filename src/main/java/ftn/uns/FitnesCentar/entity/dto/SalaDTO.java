@@ -4,31 +4,21 @@ public class SalaDTO {
     private Long id;
     private int kapacitet;
     private String oznaka;
-    private int idFC;
 
     //PRAZAN KONSTRUKTOR
     public SalaDTO() { }    //TREBA
     //KONTRUKTOR
-    public SalaDTO(Long id, int kapacitet, String oznaka, int idFC) {
+    public SalaDTO(Long id, int kapacitet, String oznaka) {
         this.id = id;
         this.kapacitet = kapacitet;
         this.oznaka = oznaka;
-        this.idFC = idFC;
     }
 
-    public SalaDTO(int kapacitet, String oznaka, int idFC) {
+    public SalaDTO(int kapacitet, String oznaka) {
         this.kapacitet = kapacitet;
         this.oznaka = oznaka;
-        this.idFC = idFC;
     }
 
-    public SalaDTO(Long id, int idFC, int kapacitet, String oznaka, int idFC1) {
-        this.id = id;
-        this.idFC = idFC;
-        this.kapacitet = kapacitet;
-        this.oznaka = oznaka;
-
-    }
 
     public Long getId() {
         return id;
@@ -54,11 +44,4 @@ public class SalaDTO {
         this.oznaka = oznaka;
     }
 
-    public int getIdFC() {
-        return idFC;
-    }
-
-    public void setIdFC(int idFC) {
-        this.idFC = idFC;
-    }
 }

@@ -46,53 +46,54 @@ values ('pajacoach','erueryeyr','paja','pajic','0621433399','japa@gmail.com','19
 insert into trener (user,lozinka,ime,prezime,telefon,email,datum_Rodjenja,uloga,aktivan)
 values ('monikacoach','zxzxvxv','monika','nikolic','0621453339','moniii@gmail.com','1992-10-01','2','true');
 --testiranje treninga
-insert into trening (naziv,nivo_treninga,trajanje_u_nedeljama,dana_u_nedelji,tip_treninga,opis)
-values ('Osnovni trening-pocetni','0','8','4','2','Upoznajte se sa osnovama');
-insert into trening (naziv,nivo_treninga,trajanje_u_nedeljama,dana_u_nedelji,tip_treninga,opis)
-values ('Osnovni trening-srednji','1','20','4','1','Nabacite masu');
-insert into trening (naziv,nivo_treninga,trajanje_u_nedeljama,dana_u_nedelji,tip_treninga,opis)
-values ('Osnovni trening-napredni','2','20','4','1','Dovedite formu do savrsenstva');
-insert into trening (naziv,nivo_treninga,trajanje_u_nedeljama,dana_u_nedelji,tip_treninga,opis)
-values ('Trening za pocetnike','0','8','4','2','za pocetnike');
-insert into trening (naziv,nivo_treninga,trajanje_u_nedeljama,dana_u_nedelji,tip_treninga,opis)
-values ('Tone it up','0','6','4','0','Smrsajte brzo');
-insert into trening (naziv,nivo_treninga,trajanje_u_nedeljama,dana_u_nedelji,tip_treninga,opis)
-values ('Dirty bulk','2','12','4','1','Nabacite masu');
-insert into trening (naziv,nivo_treninga,trajanje_u_nedeljama,dana_u_nedelji,tip_treninga,opis)
-values ('Clean bulk','2','12','4','1','Nabacite ciste misice');
-insert into trening (naziv,nivo_treninga,trajanje_u_nedeljama,dana_u_nedelji,tip_treninga,opis)
-values ('Cut','3','8','4','0','Definicija');
---testiranje sale
-insert into sala (kapacitet,oznaka,idFC) values (50,'fc1s1', 1);
-insert into sala (kapacitet,oznaka,idFC) values (50,'fc1s2', 1);
-insert into sala (kapacitet,oznaka,idFC) values (10,'fc2s1', 2);
-insert into sala (kapacitet,oznaka,idFC) values (5,'fc2s2', 2);
-insert into sala (kapacitet,oznaka,idFC) values (15,'fc3s1', 3);
-insert into sala (kapacitet,oznaka,idFC) values (23,'fc3s2', 3);
-
+insert into trening (naziv,nivo_treninga,trajanje_u_nedeljama,dana_u_nedelji,tip_treninga,opis, trener_id)
+values ('Osnovni trening-pocetni','0','8','4','2','Upoznajte se sa osnovama', 1);
+insert into trening (naziv,nivo_treninga,trajanje_u_nedeljama,dana_u_nedelji,tip_treninga,opis, trener_id)
+values ('Osnovni trening-srednji','1','20','4','1','Nabacite masu',1);
+insert into trening (naziv,nivo_treninga,trajanje_u_nedeljama,dana_u_nedelji,tip_treninga,opis, trener_id)
+values ('Osnovni trening-napredni','2','20','4','1','Dovedite formu do savrsenstva',1);
+insert into trening (naziv,nivo_treninga,trajanje_u_nedeljama,dana_u_nedelji,tip_treninga,opis, trener_id)
+values ('Trening za pocetnike','0','8','4','2','za pocetnike',1);
+insert into trening (naziv,nivo_treninga,trajanje_u_nedeljama,dana_u_nedelji,tip_treninga,opis, trener_id)
+values ('Tone it up','0','6','4','0','Smrsajte brzo',1);
+insert into trening (naziv,nivo_treninga,trajanje_u_nedeljama,dana_u_nedelji,tip_treninga,opis, trener_id)
+values ('Dirty bulk','2','12','4','1','Nabacite masu',1);
+insert into trening (naziv,nivo_treninga,trajanje_u_nedeljama,dana_u_nedelji,tip_treninga,opis, trener_id)
+values ('Clean bulk','2','12','4','1','Nabacite ciste misice',1);
+insert into trening (naziv,nivo_treninga,trajanje_u_nedeljama,dana_u_nedelji,tip_treninga,opis, trener_id)
+values ('Cut','3','8','4','0','Definicija',1);
 --testiranje fitnes centra
 insert into fitness_centar(adresa,broj_telefona_centrale,email,naziv)
 values ('Laze Kostica 1','021456123','extremebulevar@gmail.com','Extreme Bulevar');
-insert into fitness_centar(adresa,broj_telefona_centrale,email,naziv)
-values ('Tolstojeva 2','021444123','extremegrbavica@gmail.com','Extreme Grbavica');
-insert into fitness_centar(adresa,broj_telefona_centrale,email,naziv)
-values ('Narodnog fronta 22','021453223','extremeliman@gmail.com','Extreme Liman');
---testiranje FITNESS_CENTAR_SALE
-insert into FITNESS_CENTAR_SALE (FITNESS_CENTAR_ID,SALE_ID) values (1,1);
-insert into FITNESS_CENTAR_SALE (FITNESS_CENTAR_ID,SALE_ID) values (1,2);
-insert into FITNESS_CENTAR_SALE (FITNESS_CENTAR_ID,SALE_ID) values (2,3);
-insert into FITNESS_CENTAR_SALE (FITNESS_CENTAR_ID,SALE_ID) values (2,4);
-insert into FITNESS_CENTAR_SALE (FITNESS_CENTAR_ID,SALE_ID) values (3,5);
-insert into FITNESS_CENTAR_SALE (FITNESS_CENTAR_ID,SALE_ID) values (3,6);
+--testiranje sale
+insert into sala (kapacitet,oznaka,fitness_centar_id) values (20,'1', 1);
+insert into sala (kapacitet,oznaka,fitness_centar_id) values (21,'2', 1);
+insert into sala (kapacitet,oznaka,fitness_centar_id) values (14,'3', 1);
+
 --testiranje termina
-insert into termin (cena, datumivreme, trening_id)
-values (300, '2021-08-08', 1);
-insert into termin (cena, datumivreme, trening_id)
-values (400, '2021-08-08', 2);
-insert into termin (cena, datumivreme, trening_id)
-values (500, '2021-08-08', 3);
-insert into termin (cena, datumivreme, trening_id)
-values (300, '2021-08-08', 4);
+insert into termin (cena, datumivreme, fitness_centar_id,trening_id,odradjeni_trening_id,ocena_id,clan_id,sala_id)
+values (300, '2021-08-08', 1, 1, null,null, null, 1);
+insert into termin (cena, datumivreme, fitness_centar_id,trening_id,odradjeni_trening_id,ocena_id,clan_id,sala_id)
+values (400, '2021-08-08', 1, 2, null,null, null, 1);
+insert into termin (cena, datumivreme, fitness_centar_id,trening_id,odradjeni_trening_id,ocena_id,clan_id,sala_id)
+values (500, '2021-08-08', 1, 3, null,null, null, 2);
+insert into termin (cena, datumivreme, fitness_centar_id,trening_id,odradjeni_trening_id,ocena_id,clan_id,sala_id)
+values (303, '2021-08-08', 1, 4, null, null, null, 2);
+insert into termin (cena, datumivreme, fitness_centar_id,trening_id,odradjeni_trening_id,ocena_id,clan_id,sala_id)
+values (333, '2021-09-08', 1, 1, null,null, null, 1);
+--test prijavljenih treninga
+--insert into prijavljeni_trening(clan_id, termin_id) values (1,1);
+--insert into prijavljeni_trening(clan_id, termin_id) values (1,2);
+--insert into prijavljeni_trening(clan_id, termin_id) values (1,3);
+--insert into prijavljeni_trening(clan_id, termin_id) values (2,1);
+--insert into prijavljeni_trening(clan_id, termin_id) values (2,4);
+--insert into prijavljeni_trening(clan_id, termin_id) values (14,1);
+
+--test odradjenih treninga
+insert into odradjeni_trening ( termin_id, clan_id, ocena) values
+(1,14,null);
+insert into odradjeni_trening ( termin_id, clan_id, ocena) values
+(2,14,null);
 
 
 

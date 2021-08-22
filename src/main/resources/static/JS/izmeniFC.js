@@ -39,7 +39,7 @@ $(document).ready(function () {
             data: JSON.stringify(newFitnesCentar),
             success: function (res) {
                 alert("Fitnes centar " + res.naziv + " je uspešno ispravljen!");
-                window.location.href = "pocetnaAdmin.html";
+                window.location.href = "http://localhost:8080/pocetnaAdmin.html?adminId=1";
             },
             error: function () {
                 alert("Greška prilikom izmene fitness centra!");

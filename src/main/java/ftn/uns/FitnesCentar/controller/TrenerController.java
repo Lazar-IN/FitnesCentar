@@ -101,7 +101,7 @@ public class TrenerController {
     }
     //METODA ZA BRISANJE JEDNOG TRENERA
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> deleteClan(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteTrener(@PathVariable Long id) {
         this.trenerService.delete(id);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

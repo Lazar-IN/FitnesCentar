@@ -15,5 +15,7 @@ public interface TreningRepository extends JpaRepository<Trening, Long> {
     List<Trening> findByTrajanjeUNedeljama(int trajanjeUNedeljama);
 
     List<Trening> findByTipTreninga(TIP tipTreninga);
+
+    List<Trening> findByTrenerId(Long trenerId);
 }
 

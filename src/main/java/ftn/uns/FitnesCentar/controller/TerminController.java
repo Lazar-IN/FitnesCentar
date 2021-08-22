@@ -1,6 +1,8 @@
 package ftn.uns.FitnesCentar.controller;
 
+import ftn.uns.FitnesCentar.entity.FitnessCentar;
 import ftn.uns.FitnesCentar.entity.Termin;
+import ftn.uns.FitnesCentar.entity.Trening;
 import ftn.uns.FitnesCentar.entity.dto.TerminDTO;
 import ftn.uns.FitnesCentar.service.FitnessCentarService;
 import ftn.uns.FitnesCentar.service.TerminService;
@@ -40,8 +42,8 @@ public class TerminController {
 
         return new ResponseEntity<>(terminDTO, HttpStatus.OK);
     }
-    //METODA ZA DOBAVLJANJE SVIH TERMINA
-    @GetMapping(value = "/zaTrening/{treningId}",produces = MediaType.APPLICATION_JSON_VALUE)
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<TerminDTO>> getTermins() {
 
         List<Termin> terminList = this.terminService.findAll();
@@ -56,12 +58,34 @@ public class TerminController {
         }
         return new ResponseEntity<>(terminDTOS, HttpStatus.OK);
     }
+    //METODA ZA DOBAVLJANJE SVIH TERMINA ZA ODREDJENI TRENING
+    @GetMapping(value = "/zaTrening/{treningId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<TerminDTO>> getTermins(@PathVariable("treningId") Long treningId) {
+
+        List<Termin> terminList = this.terminService.findByTreningId(treningId);
+
+        List<TerminDTO> terminDTOS = new ArrayList<>();
+
+        for (Termin termin : terminList) {
+            TerminDTO terminDTO = new TerminDTO(termin.getId(),
+                    termin.getCena(),termin.getDatumIVreme());
+
+            terminDTOS.add(terminDTO);
+        }
+        return new ResponseEntity<>(terminDTOS, HttpStatus.OK);
+    }
     //METODA ZA KREIRANJE NOVOG TERMINA
     @PostMapping(value = "/zaTrening/{treningId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<TerminDTO> createTermin(@RequestBody TerminDTO terminDTO) throws Exception {
+    public ResponseEntity<TerminDTO> createTermin(@RequestBody TerminDTO terminDTO, @PathVariable("treningId") Long treningId) throws Exception {
+        Trening trening = treningService.findOne(treningId);
+        FitnessCentar fitnessCentar = fitnessCentarService.findOne(trening.getTrener().getFitnessCentar().getId());
+
 
         Termin termin = new Termin(terminDTO.getId(),terminDTO.getCena(),
                 terminDTO.getDatumIVreme());
+
+        termin.setTrening(trening);
+        termin.setFitnessCentar(fitnessCentar);
 
         Termin newTermin = terminService.save(termin);
 

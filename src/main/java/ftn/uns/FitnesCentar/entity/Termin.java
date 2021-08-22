@@ -31,14 +31,8 @@ public class Termin implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     private FitnessCentar fitnessCentar;
 
-    @Column
-    private int idFC;
-
     @ManyToOne(fetch = FetchType.LAZY)
     private Trening trening;
-
-    @Column
-    private int idT;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Clan odradjeniTrening;
@@ -61,12 +55,15 @@ public class Termin implements Serializable {
         this.trening = trening;
         this.odradjeniTrening = odradjeniTrening;
         this.ocena = ocena;
-        this.idFC= Math.toIntExact(fitnessCentar.getId());
-        this.idT = Math.toIntExact(trening.getId());
     }
 
     public Termin(Long id, double cena, LocalDateTime datumIVreme) {
         this.id = id;
+        this.cena = cena;
+        this.datumIVreme = datumIVreme;
+    }
+
+    public Termin( Double cena, LocalDateTime datumIVreme) {
         this.cena = cena;
         this.datumIVreme = datumIVreme;
     }

@@ -11,6 +11,7 @@ public class PrijavljeniTrening {
     @ManyToOne(fetch = FetchType.LAZY)
     private Termin termin;
 
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Clan clan;
 

@@ -7,17 +7,13 @@ $(document).ready(function () {
 
             //let fitnesId = this.dataset.fitneId;
             var currentUrl = window.location.href;
-            //let params = (new URL(currentUrl)).searchParams;
-            //params.get('fitnesId') // broj
+            let params = (new URL(currentUrl)).searchParams;
+            fitnesId = params.get('fitnesId') // broj
 
             for (i = 0; i < respond.length; i++) {
-               // window.alert(currentUrl);
-                //window.alert(respond[i].idFC);
-                //window.alert("http://localhost:8080/salaOdFC.html?fitnesId="+respond[i].idFC);
-                if(currentUrl === "http://localhost:8080/salaOdFC.html?fitnesId="+respond[i].idFC){
+                if(currentUrl === "http://localhost:8080/salaOdFC.html?fitnesId="+fitnesId){
                     let row = "<tr>";
                     row += "<td>" + respond[i].id + "</td>";
-                    row += "<td>" + respond[i].idFC + "</td>";
                     row += "<td>" + respond[i].kapacitet + "</td>";
                     row += "<td>" + respond[i].oznaka + "</td>";
                     let btn = "<button class='btnIzmeni' data-id=" + respond[i].id + ">Izmeni</button>";

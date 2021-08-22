@@ -52,5 +52,9 @@ public class TreningService {
         return savedTr;
     }
 
-    
+
+    public List<Trening> findByTrenerId(Long trenerId) {
+        List<Trening> trenings = this.treningRepository.findByTrenerId(trenerId);
+        return trenings;
+    }
 }

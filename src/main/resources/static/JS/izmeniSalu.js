@@ -6,7 +6,6 @@ $(document).ready(function () {
         url: "http://localhost:8080/api/sala/" + salaId,
         dataType: "json",
         success: function (res) {
-            $('#fitnesCentar').val(res.idFC);
             $('#kapacitet').val(res.kapacitet);
             $('#oznaka').val(res.oznaka);
         },
@@ -17,12 +16,10 @@ $(document).ready(function () {
 
     $(document).on("submit", "#dodajSaluForm", function (event) {
         event.preventDefault();
-        let idFC = $("#fitnesCentar").val();
         let kapacitet = $("#kapacitet").val();
         let oznaka = $("#oznaka").val();
 
         let newSala = {
-            idFC,
             kapacitet,
             oznaka
         }
@@ -35,7 +32,7 @@ $(document).ready(function () {
             data: JSON.stringify(newSala),
             success: function (res) {
                 alert("Sala " + res.id + " je uspešno ispravljena!");
-                window.location.href = "http://localhost:8080/pocetnaAdmin.html";
+                window.location.href = "http://localhost:8080/pocetnaAdmin.html?adminId=1";
             },
             error: function () {
                 alert("Greška prilikom izmene sale!");

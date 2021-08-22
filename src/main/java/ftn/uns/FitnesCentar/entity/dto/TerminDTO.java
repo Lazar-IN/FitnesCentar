@@ -41,4 +41,5 @@ public class TerminDTO {
     public void setDatumIVreme(LocalDateTime datumIVreme) {
         this.datumIVreme = datumIVreme;
     }
+
 }

@@ -11,7 +11,13 @@ $(document).ready(function () {
         success: function (res) {
             for (i = 0; i < res.length; i++) {
                 let row = "<tr>";
+                row += "<td>" + res[i].id + "</td>";
+                //row += "<td>" + res[i].termin.id + "</td>";
+                //row += "<td>" + res[i].termin.trening.id + "</td>";
                 row += "<td>" + res[i].naziv + "</td>";
+                row += "<td>" + res[i].nivoTreninga + "</td>";
+                row += "<td>" + res[i].danaUNedelji + "</td>";
+                row += "<td>" + res[i].trajanjeUNedeljama + "</td>";
                 row += "<th>" + res[i].tipTreninga + "</th>";
                 row += "<th>" + res[i].datumIVreme + "</th>";
                 let btn = "<button class='btnDelete' data-id=" + res[i].id + ">Otkazi</button>";
@@ -25,23 +31,31 @@ $(document).ready(function () {
         },
         error: function (res) {
             console.log("ERROR:\n", res);
+            window.alert("Greska  u prikazu");
         }
     });
 });
 
 $(document).on('click', '.btnDelete', function () {
+    let urlParams = new URLSearchParams(window.location.search);
+    let clanId = urlParams.get('clanId');
+    //let urlParams1 = new URLSearchParams(window.location.search);
+    //let terminId = urlParams1.get('terminId');
     let treningId = this.dataset.id;
+
 
     $.ajax({
         type: "DELETE",
-        url: "http://localhost:8080/api/prijavljeniTrening/odClana/" + treningId,
+        url: "http://localhost:8080/api/prijavljeniTrening/odClana/" +treningId,
         dataType: "json",
         success: function () {
             console.log("SUCCESS");
             $('[dataId="' + treningId + '"]').parent().parent().remove();
+            window.location.href = "http://localhost:8080/pocetnaClan.html?clanId=" + clanId;
+
         },
         error: function () {
-            alert("Greška!");
+            alert("Greška u brisanju!");
         }
     });
 });
@@ -49,34 +63,36 @@ $(document).on('click', '.btnDelete', function () {
 $(document).on('click', '.btnOdradjen', function () {
     let urlParams = new URLSearchParams(window.location.search);
     let clanId = urlParams.get('clanId');
-    let urlParams1 = new URLSearchParams(window.location.search);
-    let terminId = urlParams1.get('terminId');
-    let urlParams2 = new URLSearchParams(window.location.search);
-    let treningId = urlParams2.get('treningId');
+    //let urlParams1 = new URLSearchParams(window.location.search);
+    //let terminId = urlParams1.get('terminId');
+    //let urlParams2 = new URLSearchParams(window.location.search);
+    //let treningId = urlParams2.get('treningId');
+    let treningId = this.dataset.id;
+    let terminId = this.dataset.id;
     $.ajax({
         type: "POST",
-        url: "http://localhost:8080/api/odradjeniTrening/zaTrening/" + treningId + "/termin/" + terminId + "/clan/" + clanId,
+        url: "http://localhost:8080/api/odradjeniTrening/odClana/" + clanId + "/termin/" + terminId ,
         dataType: "json",
         success: function (res) {
-            alert("Termin " + res.id + " je uspešno prijavljen!");
-            window.location.href = "odradjeniTreninzi.html?clanId=" + clanId;
+            alert("Termin  je uspešno odradjen!");
+            window.location.href = "http://localhost:8080/pocetnaClan.html?clanId=" + clanId;
         },
         error: function () {
-            alert("Greška!");
+            alert("Greška u POST-ovanju u odradjeniTrening!");
         }
     });
     let prijavljeniId = this.dataset.id;
 
     $.ajax({
         type: "DELETE",
-        url: "http://localhost:8080/api/odradjeniTrening/zaClana/" + prijavljeniId,
+        url: "http://localhost:8080/api/prijavljeniTrening/odClana/" + prijavljeniId,
         dataType: "json",
         success: function () {
             console.log("SUCCESS");
             $('[dataId="' + treningId + '"]').parent().parent().remove();
         },
         error: function () {
-            alert("Greška!");
+            alert("Greška u brisanju sa prijavljeniTreing!");
         }
     });
 });

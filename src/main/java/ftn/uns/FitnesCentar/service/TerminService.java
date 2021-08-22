@@ -21,7 +21,13 @@ public class TerminService {
 
     public List<Termin> findAll() {
         List<Termin> termins = this.terminRepository.findAll();
+
         return  termins;
+    }
+
+    public List<Termin> findByTreningId(Long treningId) {
+        List<Termin> termins = this.terminRepository.findByTreningId(treningId);
+        return termins;
     }
 
     public Termin save(Termin termin){
@@ -41,6 +47,7 @@ public class TerminService {
 
         terToUpdate.setCena(termin.getCena());
         terToUpdate.setDatumIVreme(termin.getDatumIVreme());
+
 
         Termin savedT = this.terminRepository.save(terToUpdate);
 

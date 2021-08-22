@@ -18,4 +18,6 @@ public interface TerminRepository extends JpaRepository<Termin, Long> {
 
     List<Termin> findBySala(Sala sala);
 
+    List<Termin> findByTreningId(Long treningId);
+
 }

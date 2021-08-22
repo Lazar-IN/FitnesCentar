@@ -8,27 +8,29 @@ public class OdradjeniTrening {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    private Integer ocena;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Trening trening;
-
     @ManyToOne(fetch = FetchType.LAZY)
     private Termin termin;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Clan clan;
 
+    @Column
+    private Integer ocena;
+
+
     public OdradjeniTrening() {
     }
 
-    public OdradjeniTrening(Long id, Integer ocena,
-                            Trening trening, Termin termin,
+    public OdradjeniTrening(Long id, Integer ocena, Termin termin,
                             Clan clan) {
         this.id = id;
         this.ocena = ocena;
-        this.trening = trening;
+        this.termin = termin;
+        this.clan = clan;
+    }
+
+    public OdradjeniTrening(Long id, Termin termin, Clan clan) {
+        this.id = id;
         this.termin = termin;
         this.clan = clan;
     }
@@ -51,14 +53,6 @@ public class OdradjeniTrening {
 
     public void setOcena(Integer ocena) {
         this.ocena = ocena;
-    }
-
-    public Trening getTrening() {
-        return trening;
-    }
-
-    public void setTrening(Trening trening) {
-        this.trening = trening;
     }
 
     public Termin getTermin() {

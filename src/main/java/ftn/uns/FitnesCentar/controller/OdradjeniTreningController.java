@@ -23,18 +23,18 @@ import java.util.List;
 public class OdradjeniTreningController {
     private final OdradjeniTreningService odradjeniTreningService;
     private final ClanService clanService;
-    private final TreningService treningService;
     private final TerminService terminService;
 
     @Autowired
     public OdradjeniTreningController(OdradjeniTreningService odradjeniTreningService,
-                                      ClanService clanService, TreningService treningService, TerminService terminService) {
+                                      ClanService clanService, TerminService terminService) {
         this.odradjeniTreningService = odradjeniTreningService;
         this.clanService = clanService;
-        this.treningService = treningService;
         this.terminService = terminService;
     }
 
+
+    //PO ID-U
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<OdradjeniTreningDTO> getOdradjeniTrening(@PathVariable("id") Long id) {
         OdradjeniTrening odradjeniTrening = this.odradjeniTreningService.findOne(id);
@@ -42,13 +42,16 @@ public class OdradjeniTreningController {
         OdradjeniTreningDTO odradjeniTreningDTO = new OdradjeniTreningDTO();
         odradjeniTreningDTO.setId(odradjeniTrening.getId());
         odradjeniTreningDTO.setOcena(odradjeniTrening.getOcena());
-        odradjeniTreningDTO.setNaziv(odradjeniTrening.getTrening().getNaziv());
-        odradjeniTreningDTO.setTipTreninga(odradjeniTrening.getTrening().getTipTreninga());
+        odradjeniTreningDTO.setNaziv(odradjeniTrening.getTermin().getTrening().getNaziv());
+        odradjeniTreningDTO.setNivoTreninga(odradjeniTrening.getTermin().getTrening().getNivoTreninga());
+        odradjeniTreningDTO.setTipTreninga(odradjeniTrening.getTermin().getTrening().getTipTreninga());
         odradjeniTreningDTO.setDatumIVreme(odradjeniTrening.getTermin().getDatumIVreme());
 
         return new ResponseEntity<>(odradjeniTreningDTO, HttpStatus.OK);
     }
 
+
+    // OD CLANA
     @GetMapping(value = "/odClana/{clanId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<OdradjeniTreningDTO>> getOdradjeniTreningId(@PathVariable("clanId") Long clanId) {
         List<OdradjeniTrening> odradjeniTreningList = this.odradjeniTreningService.findByClanId(clanId);
@@ -56,9 +59,14 @@ public class OdradjeniTreningController {
         List<OdradjeniTreningDTO> odradjeniTreningDTOS = new ArrayList<>();
 
         for(OdradjeniTrening odradjeniTrening: odradjeniTreningList) {
-            OdradjeniTreningDTO odradjeniTreningDTO = new OdradjeniTreningDTO(odradjeniTrening.getId(), odradjeniTrening.getOcena(),
-                    odradjeniTrening.getTrening().getNaziv(), odradjeniTrening.getTrening().getTipTreninga(), odradjeniTrening.getTermin().getDatumIVreme());
-            odradjeniTreningDTOS.add(odradjeniTreningDTO);
+            OdradjeniTreningDTO odradjeniTreningDTO = new OdradjeniTreningDTO(odradjeniTrening.getId(),
+                    odradjeniTrening.getOcena(),
+                    odradjeniTrening.getTermin().getTrening().getNaziv(),
+                    odradjeniTrening.getTermin().getTrening().getNivoTreninga(),
+                    odradjeniTrening.getTermin().getTrening().getTipTreninga(),
+                    odradjeniTrening.getTermin().getDatumIVreme());
+
+                    odradjeniTreningDTOS.add(odradjeniTreningDTO);
         }
 
         return new ResponseEntity<>(odradjeniTreningDTOS, HttpStatus.OK);
@@ -73,27 +81,28 @@ public class OdradjeniTreningController {
         OdradjeniTrening updatedOdradjeniTrening = odradjeniTreningService.update(odradjeniTrening);
 
         OdradjeniTreningDTO updatedOdradjeniTreningDTO = new OdradjeniTreningDTO(updatedOdradjeniTrening.getId(), updatedOdradjeniTrening.getOcena(),
-                updatedOdradjeniTrening.getTrening().getNaziv(), updatedOdradjeniTrening.getTrening().getTipTreninga(), updatedOdradjeniTrening.getTermin().getDatumIVreme());
+                updatedOdradjeniTrening.getTermin().getTrening().getNaziv(),updatedOdradjeniTrening.getTermin().getTrening().getNivoTreninga(), updatedOdradjeniTrening.getTermin().getTrening().getTipTreninga(), updatedOdradjeniTrening.getTermin().getDatumIVreme());
 
         return new ResponseEntity<>(updatedOdradjeniTreningDTO, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/trening/{treningId}/termin/{terminId}/clan/{clanId}",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<OdradjeniTreningDTO> createOdradjeniTrening(@PathVariable("clanId") Long clanId, @PathVariable("terminId") Long terminId, @PathVariable("treningId") Long treningId) throws Exception {
+    @PostMapping(value = "/odClana/{clanId}/termin/{terminId}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<OdradjeniTreningDTO> createOdradjeniTrening(@PathVariable("clanId") Long clanId, @PathVariable("terminId") Long terminId) throws Exception {
         Clan clan = clanService.findOne(clanId);
-        Trening trening = treningService.findOne(treningId);
         Termin termin = terminService.findOne(terminId);
 
         OdradjeniTrening odradjeniTrening = new OdradjeniTrening();
 
-        odradjeniTrening.setTrening(trening);
         odradjeniTrening.setClan(clan);
         odradjeniTrening.setTermin(termin);
 
         OdradjeniTrening newOdradjeniTrening = odradjeniTreningService.create(odradjeniTrening);
 
-        OdradjeniTreningDTO newOdradjeniTreningDTO = new OdradjeniTreningDTO(newOdradjeniTrening.getId(), newOdradjeniTrening.getOcena(),
-                newOdradjeniTrening.getTrening().getNaziv(), newOdradjeniTrening.getTrening().getTipTreninga(),
+        OdradjeniTreningDTO newOdradjeniTreningDTO = new OdradjeniTreningDTO(newOdradjeniTrening.getId(),
+                newOdradjeniTrening.getOcena(),
+                newOdradjeniTrening.getTermin().getTrening().getNaziv(),
+                newOdradjeniTrening.getTermin().getTrening().getNivoTreninga(),
+                newOdradjeniTrening.getTermin().getTrening().getTipTreninga(),
                 newOdradjeniTrening.getTermin().getDatumIVreme());
 
         return new ResponseEntity<>(newOdradjeniTreningDTO, HttpStatus.CREATED);

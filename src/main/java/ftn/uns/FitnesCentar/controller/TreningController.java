@@ -58,6 +58,23 @@ public class TreningController {
         }
         return new ResponseEntity<>(treningDTOS, HttpStatus.OK);
     }
+    //METODA ZA DOBAVLJANJE SVIH TRENINGA OD JEDNOG TRENERA
+    @GetMapping(value = "/odTrenera/{trenerId}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<TreningDTO>> getTreningeId(@PathVariable("trenerId") Long trenerId) {
+        List<Trening> treningList = this.treningService.findByTrenerId(trenerId);
+
+        List<TreningDTO> treningDTOS = new ArrayList<>();
+
+        for(Trening trening: treningList) {
+            TreningDTO treningDTO = new TreningDTO(trening.getId(), trening.getNaziv(), trening.getNivoTreninga(),
+                    trening.getTrajanjeUNedeljama(), trening.getDanaUNedelji(), trening.getTipTreninga(), trening.getOpis());
+            treningDTOS.add(treningDTO);
+        }
+
+        return new ResponseEntity<>(treningDTOS, HttpStatus.OK);
+    }
+
+
     //METODA ZA KREIRANJE NOVOG TRENINGA
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<TreningDTO> createTrening(@RequestBody TreningDTO treningDTO) throws Exception {

@@ -39,15 +39,22 @@ public class PrijavljeniTreningController {
 
         for(PrijavljeniTrening prijavljeniTrening: prijavljeniTreningList) {
             PrijavljeniTreningDTO prijavljeniTreningDTO = new PrijavljeniTreningDTO(prijavljeniTrening.getId(),
+                    //prijavljeniTrening.getTermin().getId(),
+                    //prijavljeniTrening.getTermin().getTrening().getId(),
                     prijavljeniTrening.getTermin().getTrening().getNaziv(),
-                    prijavljeniTrening.getTermin().getTrening().getTipTreninga(), prijavljeniTrening.getTermin().getDatumIVreme());
+                    prijavljeniTrening.getTermin().getTrening().getNivoTreninga(),
+                    prijavljeniTrening.getTermin().getTrening().getDanaUNedelji(),
+                    prijavljeniTrening.getTermin().getTrening().getTrajanjeUNedeljama(),
+                    prijavljeniTrening.getTermin().getTrening().getTipTreninga(),
+                    prijavljeniTrening.getTermin().getDatumIVreme());
+
             prijavljeniTreningDTOS.add(prijavljeniTreningDTO);
         }
 
         return new ResponseEntity<>(prijavljeniTreningDTOS, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/clan/{clanId}/termin/{terminId}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/odClana/{clanId}/termin/{terminId}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PrijavljeniTreningDTO> createPrijavljeniTrening(@PathVariable("clanId") Long clanId, @PathVariable("terminId") Long terminId) throws Exception {
         Clan clan = clanService.findOne(clanId);
         Termin termin = terminService.findOne(terminId);
@@ -59,8 +66,11 @@ public class PrijavljeniTreningController {
 
         PrijavljeniTrening newPrijavljeniTrening = prijavljeniTreningService.create(prijavljeniTrening);
 
-        PrijavljeniTreningDTO newPrijavljeniTreningDTO = new PrijavljeniTreningDTO(newPrijavljeniTrening.getId(), newPrijavljeniTrening.getTermin().getTrening().getNaziv(),
-                newPrijavljeniTrening.getTermin().getTrening().getTipTreninga(), newPrijavljeniTrening.getTermin().getDatumIVreme());
+        PrijavljeniTreningDTO newPrijavljeniTreningDTO = new PrijavljeniTreningDTO(newPrijavljeniTrening.getId(),
+                /*newPrijavljeniTrening.getTermin().getId(), newPrijavljeniTrening.getTermin().getTrening().getId(),*/
+                newPrijavljeniTrening.getTermin().getTrening().getNaziv(), newPrijavljeniTrening.getTermin().getTrening().getNivoTreninga(),
+                newPrijavljeniTrening.getTermin().getTrening().getDanaUNedelji(),newPrijavljeniTrening.getTermin().getTrening().getTrajanjeUNedeljama(),
+                newPrijavljeniTrening.getTermin().getTrening().getTipTreninga(),newPrijavljeniTrening.getTermin().getDatumIVreme());
 
         return new ResponseEntity<>(newPrijavljeniTreningDTO, HttpStatus.CREATED);
     }

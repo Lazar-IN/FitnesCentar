@@ -24,6 +24,10 @@ public class SalaService {
 
         return salas;
     }
+    public List<Sala> findByFitnessCentarId(Long fitnessCentarId) {
+        List<Sala> salas = this.salaRepository.findByFitnessCentarId(fitnessCentarId);
+        return salas;
+    }
 
     public Sala save(Sala sala){
         return this.salaRepository.save(sala);
@@ -47,4 +51,6 @@ public class SalaService {
 
         return savedS;
     }
+
+
 }

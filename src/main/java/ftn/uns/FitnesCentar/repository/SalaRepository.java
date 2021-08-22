@@ -14,4 +14,6 @@ public interface SalaRepository extends JpaRepository<Sala, Long> {
     List<Sala> findByKapacitet(int kapacitet);
 
     List<Sala> findByOznaka(String oznaka);
+
+    List<Sala> findByFitnessCentarId(Long fitnessCentarId);
 }

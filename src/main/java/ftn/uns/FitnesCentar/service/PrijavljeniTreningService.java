@@ -17,7 +17,6 @@ public class PrijavljeniTreningService {
 
         return prijavljeniTrening;
     }
-
     public List<PrijavljeniTrening> findByClanId(Long clanId) {
         List<PrijavljeniTrening> prijavljeniTrenings = this.prijavljeniTreningRepository.findByClanId(clanId);
 

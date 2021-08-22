@@ -23,8 +23,7 @@ $(document).on("submit", "form", function (event) {
             console.log(response);
 
             alert("Fitnes centar " + response.naziv + " je uspešno kreiran!");
-            //window.location.href = "index.html";
-            //window.location.href = "pocetnaAdmin.html?adminId="+ adminId;
+            window.location.href = "http://localhost:8080/pocetnaAdmin.html?adminId=1";
         },
         error: function () {
             alert("Greška pri dodavanju fitness centra!");
