@@ -7,16 +7,17 @@ $(document).ready(function () {
         success: function (response) {
             console.log("SUCCESS:\n", response);
 
-            for (let trener of response) {
+            for (i = 0; i < response.length; i++) {
                 let row = "<tr>";
-                row += "<td>" + trener.id + "</td>";
-                row += "<td>" + trener.korisnickoIme + "</td>";
-                row += "<td>" + trener.ime + "</td>";
-                row += "<td>" + trener.prezime + "</td>";
-                row += "<td>" + trener.email + "</td>";
-
-                row += "</tr>";
-
+                if(response[i].aktivan == true){
+                    row += "<td>" + response[i].id + "</td>";
+                    row += "<td>" + response[i].korisnickoIme + "</td>";
+                    row += "<td>" + response[i].ime + "</td>";
+                    row += "<td>" + response[i].prezime + "</td>";
+                    row += "<td>" + response[i].email + "</td>";
+                    row += "</tr>";
+                }else{
+                }
                 $('#treneri').append(row);
             }
         },

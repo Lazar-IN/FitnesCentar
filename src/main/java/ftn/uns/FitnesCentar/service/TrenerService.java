@@ -52,4 +52,27 @@ public class TrenerService {
 
         return savedTr;
     }
+
+    /*
+    public Trener update(Boolean active) throws Exception{
+        Trener trenerToUpdate = this.trenerRepository.getOne(trener.getId());
+
+        if (trenerToUpdate == null){
+            throw new Exception("Trener ne postoji!");
+        }
+
+        trenerToUpdate.setKorisnickoIme(trener.getKorisnickoIme());
+        trenerToUpdate.setIme(trener.getIme());
+        trenerToUpdate.setPrezime(trener.getPrezime());
+        trenerToUpdate.setDatumRodjenja(trener.getDatumRodjenja());
+        trenerToUpdate.setEmail(trener.getEmail());
+        trenerToUpdate.setUloga(trener.getUloga());
+        trenerToUpdate.setAktivan(trener.getAktivan());
+
+        Trener savedTr = this.trenerRepository.save(trenerToUpdate);
+
+        return savedTr;
+    }
+
+     */
 }

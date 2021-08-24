@@ -9,15 +9,17 @@ $(document).ready(function () {
 
             for (i = 0; i < respond.length; i++) {
                 let row = "<tr>";
-                row += "<td>" + respond[i].id + "</td>";
-                row += "<td>" + respond[i].korisnickoIme + "</td>";
-                row += "<td>" + respond[i].ime + "</td>";
-                row += "<td>" + respond[i].prezime + "</td>";
-                row += "<td>" + respond[i].email + "</td>";
-                let btn = "<button class='btnDelete' data-id=" + respond[i].id + ">Obrisi</button>";
-                row += "<td>" + btn + "</td>";
-                row += "</tr>";
-
+                if (respond[i].aktivan == true){
+                    row += "<td>" + respond[i].id + "</td>";
+                    row += "<td>" + respond[i].korisnickoIme + "</td>";
+                    row += "<td>" + respond[i].ime + "</td>";
+                    row += "<td>" + respond[i].prezime + "</td>";
+                    row += "<td>" + respond[i].email + "</td>";
+                    let btn = "<button class='btnDelete' data-id=" + respond[i].id + ">Obrisi</button>";
+                    row += "<td>" + btn + "</td>";
+                    row += "</tr>";
+                }else {
+                }
                 $('#treneri').append(row);
             }
         },

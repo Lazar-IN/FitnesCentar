@@ -29,6 +29,7 @@ public class PrijavljeniTreningDTO {
         this.datumIVreme = datumIVreme;
     }
 
+
     public PrijavljeniTreningDTO(String naziv, NIVO nivoTreninga, int danaUNedelji, int trajanjeUNedeljama, TIP tipTreninga, LocalDateTime datumIVreme) {
         this.naziv = naziv;
         this.nivoTreninga = nivoTreninga;

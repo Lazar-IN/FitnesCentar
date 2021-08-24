@@ -11,7 +11,6 @@ public class PrijavljeniTrening {
     @ManyToOne(fetch = FetchType.LAZY)
     private Termin termin;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     private Clan clan;
 
@@ -47,4 +46,5 @@ public class PrijavljeniTrening {
     public void setClan(Clan clan) {
         this.clan = clan;
     }
+
 }

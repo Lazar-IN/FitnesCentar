@@ -38,7 +38,8 @@ public class PrijavljeniTreningController {
         List<PrijavljeniTreningDTO> prijavljeniTreningDTOS = new ArrayList<>();
 
         for(PrijavljeniTrening prijavljeniTrening: prijavljeniTreningList) {
-            PrijavljeniTreningDTO prijavljeniTreningDTO = new PrijavljeniTreningDTO(prijavljeniTrening.getId(),
+            PrijavljeniTreningDTO prijavljeniTreningDTO = new PrijavljeniTreningDTO(
+                    prijavljeniTrening.getId(),
                     //prijavljeniTrening.getTermin().getId(),
                     //prijavljeniTrening.getTermin().getTrening().getId(),
                     prijavljeniTrening.getTermin().getTrening().getNaziv(),
@@ -66,7 +67,7 @@ public class PrijavljeniTreningController {
 
         PrijavljeniTrening newPrijavljeniTrening = prijavljeniTreningService.create(prijavljeniTrening);
 
-        PrijavljeniTreningDTO newPrijavljeniTreningDTO = new PrijavljeniTreningDTO(newPrijavljeniTrening.getId(),
+        PrijavljeniTreningDTO newPrijavljeniTreningDTO = new PrijavljeniTreningDTO(newPrijavljeniTrening.getTermin().getTrening().getId(),
                 /*newPrijavljeniTrening.getTermin().getId(), newPrijavljeniTrening.getTermin().getTrening().getId(),*/
                 newPrijavljeniTrening.getTermin().getTrening().getNaziv(), newPrijavljeniTrening.getTermin().getTrening().getNivoTreninga(),
                 newPrijavljeniTrening.getTermin().getTrening().getDanaUNedelji(),newPrijavljeniTrening.getTermin().getTrening().getTrajanjeUNedeljama(),

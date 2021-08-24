@@ -33,18 +33,10 @@ values ('lazar','1234','lazar','lazarevi','0600670144','zola@gmail.com','2000-05
 --testiranje trenera
 insert into trener (user,lozinka,ime,prezime,telefon,email,datum_Rodjenja,uloga,aktivan)
 values ('lazar','1234','lazar','lazarevi','0600670144','zola@gmail.com','2000-05-09','2','true');
-insert into trener (user,lozinka,ime,prezime,telefon,email,datum_Rodjenja,uloga,aktivan)
-values ('petarcoach','vajnvjfvn','pera','peric','0624120999','rape@gmail.com','1993-04-04','2','true');
-insert into trener (user,lozinka,ime,prezime,telefon,email,datum_Rodjenja,uloga,aktivan)
-values ('anacoach','vsansfvn','ana','anic','0621458899','ana@gmail.com','1995-12-04','2','true');
+
 insert into trener (user,lozinka,ime,prezime,telefon,email,datum_Rodjenja,uloga,aktivan)
 values ('robertcoach','eyuyeuyuu','robert','robertic','0621444449','robi@gmail.com','1996-11-04','2','true');
-insert into trener (user,lozinka,ime,prezime,telefon,email,datum_Rodjenja,uloga,aktivan)
-values ('andrejacoach','zxcvvcxvcxz','andreja','andrejic','0612394565','andreja@gmail.com','2000-09-11','2','true');
-insert into trener (user,lozinka,ime,prezime,telefon,email,datum_Rodjenja,uloga,aktivan)
-values ('pajacoach','erueryeyr','paja','pajic','0621433399','japa@gmail.com','1980-12-12','2','true');
-insert into trener (user,lozinka,ime,prezime,telefon,email,datum_Rodjenja,uloga,aktivan)
-values ('monikacoach','zxzxvxv','monika','nikolic','0621453339','moniii@gmail.com','1992-10-01','2','true');
+
 --testiranje treninga
 insert into trening (naziv,nivo_treninga,trajanje_u_nedeljama,dana_u_nedelji,tip_treninga,opis, trener_id)
 values ('Osnovni trening-pocetni','0','8','4','2','Upoznajte se sa osnovama', 1);
@@ -66,21 +58,22 @@ values ('Cut','3','8','4','0','Definicija',1);
 insert into fitness_centar(adresa,broj_telefona_centrale,email,naziv)
 values ('Laze Kostica 1','021456123','extremebulevar@gmail.com','Extreme Bulevar');
 --testiranje sale
-insert into sala (kapacitet,oznaka,fitness_centar_id) values (20,'1', 1);
-insert into sala (kapacitet,oznaka,fitness_centar_id) values (21,'2', 1);
-insert into sala (kapacitet,oznaka,fitness_centar_id) values (14,'3', 1);
+insert into sala (kapacitet,oznaka,fitness_centar_id) values (21,'fc1s1', 1);
+insert into sala (kapacitet,oznaka,fitness_centar_id) values (14,'fc1s2', 1);
 
 --testiranje termina
 insert into termin (cena, datumivreme, fitness_centar_id,trening_id,odradjeni_trening_id,ocena_id,clan_id,sala_id)
-values (300, '2021-08-08', 1, 1, null,null, null, 1);
+values (300, '2021-08-08', 1, 1, null, null, null, 1);
 insert into termin (cena, datumivreme, fitness_centar_id,trening_id,odradjeni_trening_id,ocena_id,clan_id,sala_id)
-values (400, '2021-08-08', 1, 2, null,null, null, 1);
+values (400, '2021-08-08', 1, 2, null, null, null, 1);
 insert into termin (cena, datumivreme, fitness_centar_id,trening_id,odradjeni_trening_id,ocena_id,clan_id,sala_id)
-values (500, '2021-08-08', 1, 3, null,null, null, 2);
+values (500, '2021-08-08', 1, 3, null, null, null, 2);
 insert into termin (cena, datumivreme, fitness_centar_id,trening_id,odradjeni_trening_id,ocena_id,clan_id,sala_id)
 values (303, '2021-08-08', 1, 4, null, null, null, 2);
 insert into termin (cena, datumivreme, fitness_centar_id,trening_id,odradjeni_trening_id,ocena_id,clan_id,sala_id)
-values (333, '2021-09-08', 1, 1, null,null, null, 1);
+values (222, '2021-09-08', 1, 5, null, null, null, 2);
+insert into termin (cena, datumivreme, fitness_centar_id,trening_id,odradjeni_trening_id,ocena_id,clan_id,sala_id)
+values (399, '2021-09-08', 1, 6, null, null, null, 1);
 --test prijavljenih treninga
 --insert into prijavljeni_trening(clan_id, termin_id) values (1,1);
 --insert into prijavljeni_trening(clan_id, termin_id) values (1,2);
@@ -90,10 +83,10 @@ values (333, '2021-09-08', 1, 1, null,null, null, 1);
 --insert into prijavljeni_trening(clan_id, termin_id) values (14,1);
 
 --test odradjenih treninga
-insert into odradjeni_trening ( termin_id, clan_id, ocena) values
-(1,14,null);
-insert into odradjeni_trening ( termin_id, clan_id, ocena) values
-(2,14,null);
+--insert into odradjeni_trening ( termin_id, clan_id, ocena) values
+--(1,14,null);
+--insert into odradjeni_trening ( termin_id, clan_id, ocena) values
+--(2,14,null);
 
 
 

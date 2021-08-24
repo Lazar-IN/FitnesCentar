@@ -99,6 +99,29 @@ public class TrenerController {
 
         return new ResponseEntity<>(updatedTrenerDTO, HttpStatus.OK);
     }
+    /*
+    //METODA ZA AZURIRANJE POSTOJECEG TRENERA samo active
+    @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<TrenerDTO> updateTrenerActive(@PathVariable Long id, @RequestBody Boolean active) throws Exception {
+
+        Trener trener = new Trener(trenerDTO.getId(), trenerDTO.getKorisnickoIme(), trenerDTO.getLozinka(),
+                trenerDTO.getIme(),trenerDTO.getPrezime(),trenerDTO.getKontaktTelefon(),trenerDTO.getEmail(),
+                trenerDTO.getDatumRodjenja(),trenerDTO.getUloga(),trenerDTO.getAktivan(),
+                trenerDTO.getProsecnaOcena());
+
+        trener.setId(id);
+
+        Trener updatedTrener = trenerService.update(trener);
+
+        TrenerDTO updatedTrenerDTO = new TrenerDTO(updatedTrener.getId(), updatedTrener.getKorisnickoIme(),updatedTrener.getLozinka(),
+                updatedTrener.getIme(),updatedTrener.getPrezime(),updatedTrener.getKontaktTelefon(),updatedTrener.getEmail(),
+                updatedTrener.getDatumRodjenja(),updatedTrener.getUloga(),updatedTrener.getAktivan(),
+                updatedTrener.getProsecnaOcena());
+
+        return new ResponseEntity<>(updatedTrenerDTO, HttpStatus.OK);
+    }
+
+     */
     //METODA ZA BRISANJE JEDNOG TRENERA
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> deleteTrener(@PathVariable Long id) {
