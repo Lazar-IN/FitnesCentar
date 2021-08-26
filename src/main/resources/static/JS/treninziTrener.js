@@ -2,7 +2,7 @@
 $(document).ready(function () {
     let urlParams = new URLSearchParams(window.location.search);
     let trenerId = urlParams.get('trenerId');
-    //window.alert(trenerId);
+    window.alert(trenerId);
 
     $.ajax({
         type: "GET",

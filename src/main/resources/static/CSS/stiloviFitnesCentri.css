@@ -1,0 +1,11 @@
+body {
+    margin: auto;
+    margin-top: 3cm;
+    width: 50%;
+    border: 2.5px solid blue;
+    padding: 20px;
+    background-color: #c5e8e6;
+    backface-visibility: inherit;
+    font-family: Josefin sans, serif;
+    text-align:center;
+}
