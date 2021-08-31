@@ -2,7 +2,9 @@ $(document).ready(function () {
     let urlParams = new URLSearchParams(window.location.search);
     let treningId = urlParams.get('treningId');
     let trenerId = urlParams.get('trenerId');
-    //window.alert(trenerId);
+    //window.alert("Trener id:"+ trenerId);
+    //window.alert("Trening id:"+ treningId);
+    $('#dodaj').attr('href', 'dodajTermin.html?treningId='+treningId+'&trenerId='+trenerId);
     $.ajax({
         type: "GET",
         url: "http://localhost:8080/api/termin/zaTrening/"+treningId ,
@@ -23,6 +25,7 @@ $(document).ready(function () {
         },
         error: function (response) {
             console.log("ERROR:\n", response);
+            alert("Greska u prikazu termina");
         }
     });
 });
@@ -32,7 +35,7 @@ $(document).on('click', '.btnDelete', function () {
 
     $.ajax({
         type: "DELETE",
-        url: "http://localhost:8080/api/termini/zaTrening/" + treningId,
+        url: "http://localhost:8080/api/termin/zaTrening/" + treningId,
         dataType: "json",
         success: function () {
             console.log("SUCCESS");
@@ -51,5 +54,5 @@ $(document).on('click', '.btnIzmeni', function () {
     //window.alert(trenerId);
     let urlParams1 = new URLSearchParams(window.location.search);
     let treningId = urlParams1.get('treningId');
-    window.location.href = "izmeniTermin.html?terminId=" + terminId + "?trenerId=" + trenerId + "&treningId=" + treningId;
+    window.location.href = "izmeniTermin.html?terminId=" + terminId + "&trenerId=" + trenerId + "&treningId=" + treningId;
 });

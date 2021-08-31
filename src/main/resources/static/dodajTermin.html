@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj termin</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300&display=swap" rel="stylesheet">
+    <link href="CSS/stiloviTermini.css" rel="stylesheet" type="text/css">
+    <script src="JS/jquery.min.js"></script>
+    <script src="JS/jquery.validate.min.js"></script>
+    <script src="JS/dodajTermin.js"></script>
+</head>
+
+<body>
+<img src="images/logo.png" width="240" alt="Logo"/>
+<form id="dodajTerminForm">
+    <h1>Dodavanje novog termin</h1>
+    <hr>
+    <label for="datumIVreme"><b>Datum i vreme:</b></label>
+    <input type="datetime-local" placeholder="Unesite datum i vreme" id="datumIVreme" required>
+    <br/><br/><br/>
+    <label for="cena"><b>Cena:</b></label>
+    <input type="number" placeholder="Unesite cenu" id="cena" required>
+    <br/>
+    <hr>
+    <button type="submit">Dodaj</button>
+</form>
+</body>
+</html>

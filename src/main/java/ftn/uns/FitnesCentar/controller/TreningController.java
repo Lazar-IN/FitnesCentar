@@ -83,13 +83,15 @@ public class TreningController {
                 treningDTO.getNivoTreninga(),treningDTO.getDanaUNedelji(),
                 treningDTO.getTrajanjeUNedeljama(),treningDTO.getTipTreninga(),
                 treningDTO.getOpis());
-
+        ////////////////////////////////////paziti ovde///////////////////////////
+        trening.setTrener(treningDTO.getTrenerId());
+        ////////////////////////////////////paziti ovde///////////////////////////
         Trening newTrening = treningService.save(trening);
 
         TreningDTO newTreningDTO = new TreningDTO(newTrening.getId(), newTrening.getNaziv(),
                 newTrening.getNivoTreninga(),newTrening.getDanaUNedelji(),
                 newTrening.getTrajanjeUNedeljama(),newTrening.getTipTreninga(),
-                newTrening.getOpis());
+                newTrening.getOpis(), treningDTO.getTrenerId());
 
         return new ResponseEntity<>(newTreningDTO, HttpStatus.CREATED);
     }

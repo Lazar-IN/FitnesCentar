@@ -28,6 +28,7 @@ $(document).ready(function () {
         },
         error: function (response) {
             console.log("ERROR:\n", response);
+            alert("Greska pri dobavljanju");
         }
     });
 });

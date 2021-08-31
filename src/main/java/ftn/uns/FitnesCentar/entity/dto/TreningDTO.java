@@ -12,9 +12,32 @@ public class TreningDTO {
     private int danaUNedelji;
     private TIP tipTreninga;
     private String opis;
+    private Long trenerId;
 
     //PRAZAN KONSTRUKTOR
     public TreningDTO() {}  //TREBA
+
+    public TreningDTO(Long id, String naziv, NIVO nivoTreninga, int trajanjeUNedeljama, int danaUNedelji, TIP tipTreninga, String opis, Long trenerId) {
+        this.id = id;
+        this.naziv = naziv;
+        this.nivoTreninga = nivoTreninga;
+        this.trajanjeUNedeljama = trajanjeUNedeljama;
+        this.danaUNedelji = danaUNedelji;
+        this.tipTreninga = tipTreninga;
+        this.opis = opis;
+        this.trenerId = trenerId;
+    }
+
+    public TreningDTO(String naziv, NIVO nivoTreninga, int trajanjeUNedeljama, int danaUNedelji, TIP tipTreninga, String opis, Long trenerId) {
+        this.naziv = naziv;
+        this.nivoTreninga = nivoTreninga;
+        this.trajanjeUNedeljama = trajanjeUNedeljama;
+        this.danaUNedelji = danaUNedelji;
+        this.tipTreninga = tipTreninga;
+        this.opis = opis;
+        this.trenerId = trenerId;
+    }
+
     //KONSTRUKTOR
     public TreningDTO(Long id, String naziv, NIVO nivoTreninga,
                       int trajanjeUNedeljama, int danaUNedelji, TIP tipTreninga, String opis) {
@@ -81,5 +104,13 @@ public class TreningDTO {
 
     public void setOpis(String opis) {
         this.opis = opis;
+    }
+
+    public Long getTrenerId() {
+        return trenerId;
+    }
+
+    public void setTrenerId(Long trenerId) {
+        this.trenerId = trenerId;
     }
 }

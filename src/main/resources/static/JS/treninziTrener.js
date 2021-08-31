@@ -1,8 +1,12 @@
-
 $(document).ready(function () {
     let urlParams = new URLSearchParams(window.location.search);
     let trenerId = urlParams.get('trenerId');
-    window.alert(trenerId);
+});
+$(document).ready(function () {
+    let urlParams = new URLSearchParams(window.location.search);
+    let trenerId = urlParams.get('trenerId');
+    //window.alert(trenerId);
+    $('#dodaj').attr('href', 'dodajTrening.html?trenerId=' + trenerId);
 
     $.ajax({
         type: "GET",
@@ -28,10 +32,10 @@ $(document).ready(function () {
         },
         error: function (response) {
             console.log("ERROR:\n", response);
+            alert("Greska pri dobavljanju");
         }
     });
 });
-
 $(document).on('click', '.btnTermin', function () {
     let treningId = this.dataset.id;
     let urlParams = new URLSearchParams(window.location.search);

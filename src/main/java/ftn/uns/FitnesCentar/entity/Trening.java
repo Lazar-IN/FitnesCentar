@@ -146,9 +146,10 @@ public class Trening implements Serializable {
         return trener;
     }
 
-    public void setTrener(Trener trener) {
-        this.trener = trener;
+    public void setTrener(Long trener) {
+        this.id = trener;
     }
+
 
     public void stampaj() {
         System.out.println("--TRENING--");

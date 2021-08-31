@@ -1,8 +1,6 @@
 body {
     margin: auto;
-    margin-top: 3cm;
-    width: 35%;
-    border: 2.5px solid blue;
+    margin-top: 1.5cm;
     padding: 20px;
     background-color: #c5e8e6;
     backface-visibility: inherit;

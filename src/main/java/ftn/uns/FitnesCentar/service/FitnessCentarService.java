@@ -25,8 +25,13 @@ public class FitnessCentarService {
         return fitnessCentars;
     }
 
-    public FitnessCentar save(FitnessCentar fitnessCentar){
-        return this.fitnesCentarRepository.save(fitnessCentar);
+    public FitnessCentar save(FitnessCentar fitnessCentar) throws Exception{
+        if (fitnessCentar.getId() != null){
+            throw new Exception("Id mora biti null");
+        }
+
+        FitnessCentar newFitnessCentar = this.fitnesCentarRepository.save(fitnessCentar);
+        return newFitnessCentar;
     }
 
     public void delete(Long id){

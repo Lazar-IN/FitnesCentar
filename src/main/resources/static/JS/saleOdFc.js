@@ -37,8 +37,8 @@ $(document).ready(function () {
 $(document).on('click', '.btnDelete', function () {
     let salaId = this.dataset.id;
 
-    window.alert(salaId);
-    window.alert("http://localhost:8080/api/sala/" + salaId);
+    //window.alert(salaId);
+    //window.alert("http://localhost:8080/api/sala/" + salaId);
     $.ajax({
         type: "DELETE",
         url: "http://localhost:8080/api/sala/" + salaId,

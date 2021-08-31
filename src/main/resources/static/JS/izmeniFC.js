@@ -13,6 +13,7 @@ $(document).ready(function () {
         },
         error: function (res) {
             console.log("ERROR:\n", res);
+            alert("Greska pri dobavljanju");
         }
     });
 

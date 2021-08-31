@@ -78,10 +78,10 @@ public class TerminController {
     @PostMapping(value = "/zaTrening/{treningId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<TerminDTO> createTermin(@RequestBody TerminDTO terminDTO, @PathVariable("treningId") Long treningId) throws Exception {
         Trening trening = treningService.findOne(treningId);
-        FitnessCentar fitnessCentar = fitnessCentarService.findOne(trening.getTrener().getFitnessCentar().getId());
+        FitnessCentar fitnessCentar = fitnessCentarService.findOne(Long.valueOf(1));
+        ////////////////////////OVDE//////////////////////////
 
-
-        Termin termin = new Termin(terminDTO.getId(),terminDTO.getCena(),
+        Termin termin = new Termin(terminDTO.getCena(),
                 terminDTO.getDatumIVreme());
 
         termin.setTrening(trening);

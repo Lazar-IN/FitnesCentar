@@ -9,13 +9,13 @@ body {
     background-size: 100%;
     background-position: 0px 30px;
     background-repeat: no-repeat;
-    background-color: azure;
+    background-color: #c5e8e6;
 }
 div {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    background-color: azure;
+    background-color: c5e8e6;
 }
 .box{
     background-color: #afb5ed;

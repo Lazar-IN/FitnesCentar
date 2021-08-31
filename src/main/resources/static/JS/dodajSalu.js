@@ -6,12 +6,10 @@ $(document).on("submit", "#dodajSaluForm", function (event) {
     //let salaId = urlParams.get('salaId');
 
 
-    let idFC = $("#idFC").val();
     let kapacitet = $("#kapacitet").val();
     let oznaka = $("#oznaka").val();
 
     let newSala = {
-        idFC,
         kapacitet,
         oznaka
     }
@@ -19,7 +17,7 @@ $(document).on("submit", "#dodajSaluForm", function (event) {
 
     $.ajax({
         type: "POST",
-        url: "http://localhost:8080/api/sala",
+        url: "http://localhost:8080/api/sala/zaFitnessCentar/1",
         dataType: "json",
         contentType: "application/json",
         data: JSON.stringify(newSala),

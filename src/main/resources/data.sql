@@ -63,17 +63,17 @@ insert into sala (kapacitet,oznaka,fitness_centar_id) values (14,'fc1s2', 1);
 
 --testiranje termina
 insert into termin (cena, datumivreme, fitness_centar_id,trening_id,odradjeni_trening_id,ocena_id,clan_id,sala_id)
-values (300, '2021-08-08', 1, 1, null, null, null, 1);
+values (300, '2021-08-08 16:00:00', 1, 1, null, null, null, 1);
 insert into termin (cena, datumivreme, fitness_centar_id,trening_id,odradjeni_trening_id,ocena_id,clan_id,sala_id)
-values (400, '2021-08-08', 1, 2, null, null, null, 1);
+values (400, '2021-08-08 17:00:00', 1, 2, null, null, null, 1);
 insert into termin (cena, datumivreme, fitness_centar_id,trening_id,odradjeni_trening_id,ocena_id,clan_id,sala_id)
-values (500, '2021-08-08', 1, 3, null, null, null, 2);
+values (500, '2021-08-08 18:00:00', 1, 3, null, null, null, 2);
 insert into termin (cena, datumivreme, fitness_centar_id,trening_id,odradjeni_trening_id,ocena_id,clan_id,sala_id)
-values (303, '2021-08-08', 1, 4, null, null, null, 2);
+values (303, '2021-08-08 19:00:00', 1, 4, null, null, null, 2);
 insert into termin (cena, datumivreme, fitness_centar_id,trening_id,odradjeni_trening_id,ocena_id,clan_id,sala_id)
-values (222, '2021-09-08', 1, 5, null, null, null, 2);
+values (222, '2021-09-08 09:00:00', 1, 5, null, null, null, 2);
 insert into termin (cena, datumivreme, fitness_centar_id,trening_id,odradjeni_trening_id,ocena_id,clan_id,sala_id)
-values (399, '2021-09-08', 1, 6, null, null, null, 1);
+values (399, '2021-09-08 10:00:00', 1, 6, null, null, null, 1);
 --test prijavljenih treninga
 --insert into prijavljeni_trening(clan_id, termin_id) values (1,1);
 --insert into prijavljeni_trening(clan_id, termin_id) values (1,2);
