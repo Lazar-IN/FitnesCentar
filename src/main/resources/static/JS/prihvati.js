@@ -60,12 +60,14 @@ $(document).ready(function () {
         });
     });
 
-    $(document).on("cancel", "#prikaz", function () {
+    $(document).on('click', ".cancelbtn", function (event) {
+        //event.preventDefault();
         let urlParams = new URLSearchParams(window.location.search);
-        let adminId = urlParams.get('clanId');
+        let adminId = urlParams.get('adminId');
         //let urlParams1 = new URLSearchParams(window.location.search);
         //let terminId = urlParams1.get('terminId');
-        let trenerId = this.dataset.id;
+        //let trenerId = this.dataset.id;
+        window.alert(trenerId);
 
 
         $.ajax({
@@ -75,7 +77,8 @@ $(document).ready(function () {
             success: function () {
                 console.log("SUCCESS");
                 $('[dataId="' + trenerId + '"]').parent().parent().remove();
-                window.location.href = "pocetnaAdmin.html?admin=" + adminId;
+                window.location.href = "pocetnaAdmin.html?admin=1"; //+ adminId;
+                alert("Zahtev je odbijen!");
 
             },
             error: function () {
