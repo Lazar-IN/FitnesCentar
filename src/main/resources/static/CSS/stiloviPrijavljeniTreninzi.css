@@ -8,3 +8,15 @@ body {
     font-family: Josefin sans, serif;
     text-align:center;
 }
+table{
+    border: 2px solid blue;
+    position: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+th{
+    border: 1.5px solid black;
+}
+td{
+    border: 1px solid black;
+}
